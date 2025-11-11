@@ -28,81 +28,93 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button1 = new Button();
-            button2 = new Button();
-            button3 = new Button();
+            adminBtn = new Button();
+            repBtn = new Button();
+            councilBtn = new Button();
             label1 = new Label();
             label2 = new Label();
-            button4 = new Button();
+            loginBtn = new Button();
             SuspendLayout();
             // 
-            // button1
+            // adminBtn
             // 
-            button1.Location = new Point(118, 213);
-            button1.Name = "button1";
-            button1.Size = new Size(178, 90);
-            button1.TabIndex = 0;
-            button1.Text = "ADMIN";
-            button1.UseVisualStyleBackColor = true;
+            adminBtn.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
+            adminBtn.Location = new Point(32, 231);
+            adminBtn.Name = "adminBtn";
+            adminBtn.Size = new Size(210, 90);
+            adminBtn.TabIndex = 0;
+            adminBtn.Text = "ADMIN";
+            adminBtn.UseVisualStyleBackColor = true;
+            adminBtn.Click += adminBtn_Click;
             // 
-            // button2
+            // repBtn
             // 
-            button2.Location = new Point(401, 213);
-            button2.Name = "button2";
-            button2.Size = new Size(178, 90);
-            button2.TabIndex = 1;
-            button2.Text = "STUDENT \r\nREPRESENTATIVE";
-            button2.UseVisualStyleBackColor = true;
+            repBtn.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
+            repBtn.Location = new Point(300, 231);
+            repBtn.Name = "repBtn";
+            repBtn.Size = new Size(210, 90);
+            repBtn.TabIndex = 1;
+            repBtn.Text = "STUDENT \r\nREPRESENTATIVE";
+            repBtn.UseVisualStyleBackColor = true;
+            repBtn.Click += repBtn_Click;
             // 
-            // button3
+            // councilBtn
             // 
-            button3.Location = new Point(684, 213);
-            button3.Name = "button3";
-            button3.Size = new Size(178, 90);
-            button3.TabIndex = 2;
-            button3.Text = "STUDENT \r\nCOUNCIL";
-            button3.UseVisualStyleBackColor = true;
+            councilBtn.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
+            councilBtn.Location = new Point(555, 231);
+            councilBtn.Name = "councilBtn";
+            councilBtn.Size = new Size(210, 90);
+            councilBtn.TabIndex = 2;
+            councilBtn.Text = "STUDENT \r\nCOUNCIL";
+            councilBtn.UseVisualStyleBackColor = true;
+            councilBtn.Click += councilBtn_Click;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Arial Rounded MT Bold", 28.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(355, 43);
+            label1.Font = new Font("Franklin Gothic Demi", 28.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.Location = new Point(293, 41);
             label1.Name = "label1";
-            label1.Size = new Size(265, 54);
+            label1.Size = new Size(233, 54);
             label1.TabIndex = 3;
             label1.Text = "REGISTER";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(341, 472);
+            label2.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold);
+            label2.ForeColor = Color.DimGray;
+            label2.Location = new Point(235, 469);
             label2.Name = "label2";
-            label2.Size = new Size(178, 20);
+            label2.Size = new Size(220, 25);
             label2.TabIndex = 4;
             label2.Text = "Already have an account?";
             // 
-            // button4
+            // loginBtn
             // 
-            button4.FlatStyle = FlatStyle.Flat;
-            button4.Location = new Point(553, 468);
-            button4.Name = "button4";
-            button4.Size = new Size(94, 29);
-            button4.TabIndex = 5;
-            button4.Text = "Register";
-            button4.UseVisualStyleBackColor = true;
+            loginBtn.FlatAppearance.BorderSize = 0;
+            loginBtn.FlatStyle = FlatStyle.Flat;
+            loginBtn.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
+            loginBtn.ForeColor = Color.DimGray;
+            loginBtn.Location = new Point(448, 458);
+            loginBtn.Name = "loginBtn";
+            loginBtn.Size = new Size(75, 46);
+            loginBtn.TabIndex = 5;
+            loginBtn.Text = "Login";
+            loginBtn.UseVisualStyleBackColor = true;
+            loginBtn.Click += loginBtn_Click;
             // 
             // RoleSelector
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(997, 537);
-            Controls.Add(button4);
+            ClientSize = new Size(803, 537);
+            Controls.Add(loginBtn);
             Controls.Add(label2);
             Controls.Add(label1);
-            Controls.Add(button3);
-            Controls.Add(button2);
-            Controls.Add(button1);
+            Controls.Add(councilBtn);
+            Controls.Add(repBtn);
+            Controls.Add(adminBtn);
             Name = "RoleSelector";
             Text = "Form1";
             ResumeLayout(false);
@@ -111,11 +123,11 @@
 
         #endregion
 
-        private Button button1;
-        private Button button2;
-        private Button button3;
+        private Button adminBtn;
+        private Button repBtn;
+        private Button councilBtn;
         private Label label1;
         private Label label2;
-        private Button button4;
+        private Button loginBtn;
     }
 }
