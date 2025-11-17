@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Project SIGMA (A Budget Request Application)")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d33f05ac0eb93b05870b34f5a28f52b5f4f95f0c")]
 [assembly: System.Reflection.AssemblyProductAttribute("Project SIGMA (A Budget Request Application)")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Project SIGMA (A Budget Request Application)")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

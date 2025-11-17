@@ -11,7 +11,8 @@ namespace Project_SIGMA__A_Budget_Request_Application_
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new LoginForm());
+            //Application.Run(new LoginForm());
+            Application.Run(new LiquidationFormAdmin());
         }
     }
 }

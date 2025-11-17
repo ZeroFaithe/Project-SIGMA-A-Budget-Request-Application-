@@ -11,10 +11,22 @@
     <Compile Update="Dashboard Form.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="LiquidationFormAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="LiquidationFormStudent.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="RegisterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="ReimbursementForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="ReimbursementFormStudent.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="RoleSelector.cs">
