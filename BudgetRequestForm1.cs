@@ -21,5 +21,10 @@ namespace Project_SIGMA__A_Budget_Request_Application_
         {
 
         }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

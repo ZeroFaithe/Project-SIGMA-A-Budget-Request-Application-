@@ -10,12 +10,11 @@ using System.Windows.Forms;
 
 namespace Project_SIGMA__A_Budget_Request_Application_
 {
-    public partial class ReimbursementFormStudent : Form
+    public partial class POAEntry : Form
     {
-        public ReimbursementFormStudent()
+        public POAEntry()
         {
             InitializeComponent();
         }
-
     }
 }

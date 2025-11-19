@@ -16,7 +16,7 @@ namespace Project_SIGMA__A_Budget_Request_Application_
         {
             InitializeComponent();
 
-          
+
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -56,12 +56,13 @@ namespace Project_SIGMA__A_Budget_Request_Application_
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void comboBox2_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            
+
         }
+
     }
 }

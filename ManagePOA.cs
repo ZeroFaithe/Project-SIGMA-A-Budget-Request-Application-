@@ -10,12 +10,21 @@ using System.Windows.Forms;
 
 namespace Project_SIGMA__A_Budget_Request_Application_
 {
-    public partial class ReimbursementFormStudent : Form
+    public partial class ManagePOA : Form
     {
-        public ReimbursementFormStudent()
+        public ManagePOA()
         {
             InitializeComponent();
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

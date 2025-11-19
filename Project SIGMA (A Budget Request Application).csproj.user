@@ -2,6 +2,9 @@
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup />
   <ItemGroup>
+    <Compile Update="BudgetRequest.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="BudgetRequestForm1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -9,6 +12,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Dashboard Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="AdminFrame.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="LiquidationFormAdmin.cs">
@@ -20,7 +26,10 @@
     <Compile Update="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="POAStudent.cs">
+    <Compile Update="ManagePOA.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="POAEntry.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="RegisterForm.cs">
@@ -33,6 +42,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="RoleSelector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="StudentFrame.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

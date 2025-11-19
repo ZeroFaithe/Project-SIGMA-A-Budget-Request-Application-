@@ -10,12 +10,16 @@ using System.Windows.Forms;
 
 namespace Project_SIGMA__A_Budget_Request_Application_
 {
-    public partial class ReimbursementFormStudent : Form
+    public partial class BudgetRequest : Form
     {
-        public ReimbursementFormStudent()
+        public BudgetRequest()
         {
             InitializeComponent();
         }
 
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

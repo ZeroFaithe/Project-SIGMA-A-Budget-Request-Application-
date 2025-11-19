@@ -1804,19 +1804,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\HP\\.nuget\\packages\\": {}
+    "C:\\Users\\Nathan Marquez\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\HP\\Source\\Repos\\Project-SIGMA-A-Budget-Request-Application-\\Project SIGMA (A Budget Request Application).csproj",
+      "projectUniqueName": "C:\\Users\\Nathan Marquez\\Downloads\\Project-SIGMA-A-Budget-Request-Application--master\\Project SIGMA (A Budget Request Application).csproj",
       "projectName": "Project SIGMA (A Budget Request Application)",
-      "projectPath": "C:\\Users\\HP\\Source\\Repos\\Project-SIGMA-A-Budget-Request-Application-\\Project SIGMA (A Budget Request Application).csproj",
-      "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\HP\\Source\\Repos\\Project-SIGMA-A-Budget-Request-Application-\\obj\\",
+      "projectPath": "C:\\Users\\Nathan Marquez\\Downloads\\Project-SIGMA-A-Budget-Request-Application--master\\Project SIGMA (A Budget Request Application).csproj",
+      "packagesPath": "C:\\Users\\Nathan Marquez\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Nathan Marquez\\Downloads\\Project-SIGMA-A-Budget-Request-Application--master\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Nathan Marquez\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1824,6 +1829,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -1880,7 +1886,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.307/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

@@ -28,10 +28,18 @@ namespace Project_SIGMA__A_Budget_Request_Application_
             this.Show();
         }
 
+        private void loginBtn_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                loginBtn.PerformClick();
+            }
+        }
         private void loginBtn_Click(object sender, EventArgs e)
         {
-            Dashboard_Form dashboard_Form = new Dashboard_Form();
-            
+            AdminFrame adminFrame = new AdminFrame();
+            StudentFrame studentFrame = new StudentFrame();
+
             if (string.IsNullOrWhiteSpace(emailTxt.Text) || string.IsNullOrWhiteSpace(passwordTxt.Text))
             {
                 MessageBox.Show("Please enter both email and password.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -53,10 +61,22 @@ namespace Project_SIGMA__A_Budget_Request_Application_
                             {
                                 string storedHashedPassword = reader.GetString(0);
                                 string userRole = reader.GetString(1);
-                                if (BCrypt.Net.BCrypt.Verify(passwordTxt.Text, storedHashedPassword))
+                                if (BCrypt.Net.BCrypt.Verify(passwordTxt.Text, storedHashedPassword) && userRole == "admin")
                                 {
                                     this.Hide();
-                                    dashboard_Form.ShowDialog();
+                                    adminFrame.ShowDialog();
+                                    this.Close();
+                                }
+                                else if (BCrypt.Net.BCrypt.Verify(passwordTxt.Text, storedHashedPassword) && userRole == "representative")
+                                {
+                                    this.Hide();
+                                    studentFrame.ShowDialog();
+                                    this.Close();
+                                }
+                                else if (BCrypt.Net.BCrypt.Verify(passwordTxt.Text, storedHashedPassword) && userRole == "council")
+                                {
+                                    this.Hide();
+                                    studentFrame.ShowDialog();
                                     this.Close();
                                 }
                                 else

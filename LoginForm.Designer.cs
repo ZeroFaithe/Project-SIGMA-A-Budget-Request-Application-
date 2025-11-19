@@ -79,6 +79,7 @@
             emailTxt.Name = "emailTxt";
             emailTxt.Size = new Size(444, 47);
             emailTxt.TabIndex = 3;
+            emailTxt.KeyDown += loginBtn_KeyDown;
             // 
             // passwordTxt
             // 
@@ -89,6 +90,7 @@
             passwordTxt.Size = new Size(444, 47);
             passwordTxt.TabIndex = 4;
             passwordTxt.UseSystemPasswordChar = true;
+            passwordTxt.KeyDown += loginBtn_KeyDown;
             // 
             // label3
             // 
