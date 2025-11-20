@@ -52,19 +52,18 @@
             panel1.Controls.Add(labelPOA);
             panel1.Controls.Add(dgvReimbursementEntry);
             panel1.Controls.Add(dgvPOAsummary);
-            panel1.Location = new Point(37, 26);
-            panel1.Margin = new Padding(3, 4, 3, 4);
+            panel1.Location = new Point(32, 20);
             panel1.Name = "panel1";
-            panel1.Size = new Size(862, 667);
+            panel1.Size = new Size(754, 500);
             panel1.TabIndex = 16;
             // 
             // labelSelectFromPOA
             // 
             labelSelectFromPOA.AutoSize = true;
             labelSelectFromPOA.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            labelSelectFromPOA.Location = new Point(73, 39);
+            labelSelectFromPOA.Location = new Point(64, 29);
             labelSelectFromPOA.Name = "labelSelectFromPOA";
-            labelSelectFromPOA.Size = new Size(231, 20);
+            labelSelectFromPOA.Size = new Size(181, 15);
             labelSelectFromPOA.TabIndex = 7;
             labelSelectFromPOA.Text = "SELECT FROM REQUESTS:";
             // 
@@ -72,84 +71,83 @@
             // 
             labelReimbursementEntry.AutoSize = true;
             labelReimbursementEntry.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            labelReimbursementEntry.Location = new Point(61, 329);
+            labelReimbursementEntry.Location = new Point(53, 247);
             labelReimbursementEntry.Name = "labelReimbursementEntry";
-            labelReimbursementEntry.Size = new Size(221, 20);
+            labelReimbursementEntry.Size = new Size(171, 15);
             labelReimbursementEntry.TabIndex = 11;
             labelReimbursementEntry.Text = "REIMBURSEMENT ENTRY";
             // 
             // btnSubmitReport
             // 
             btnSubmitReport.Font = new Font("Arial Rounded MT Bold", 9F);
-            btnSubmitReport.Location = new Point(717, 577);
-            btnSubmitReport.Margin = new Padding(3, 4, 3, 4);
+            btnSubmitReport.Location = new Point(627, 433);
             btnSubmitReport.Name = "btnSubmitReport";
-            btnSubmitReport.Size = new Size(105, 59);
+            btnSubmitReport.Size = new Size(92, 44);
             btnSubmitReport.TabIndex = 14;
             btnSubmitReport.Text = "SUBMIT REPORT";
             btnSubmitReport.UseVisualStyleBackColor = true;
+            btnSubmitReport.Click += btnSubmitReport_Click;
             // 
             // cmbPOA
             // 
             cmbPOA.FormattingEnabled = true;
-            cmbPOA.Location = new Point(310, 35);
-            cmbPOA.Margin = new Padding(3, 4, 3, 4);
+            cmbPOA.Location = new Point(271, 26);
             cmbPOA.Name = "cmbPOA";
-            cmbPOA.Size = new Size(207, 28);
+            cmbPOA.Size = new Size(182, 23);
             cmbPOA.TabIndex = 8;
             // 
             // btnUploadReceipts
             // 
             btnUploadReceipts.Font = new Font("Arial Rounded MT Bold", 9F);
-            btnUploadReceipts.Location = new Point(61, 577);
-            btnUploadReceipts.Margin = new Padding(3, 4, 3, 4);
+            btnUploadReceipts.Location = new Point(53, 433);
             btnUploadReceipts.Name = "btnUploadReceipts";
-            btnUploadReceipts.Size = new Size(105, 59);
+            btnUploadReceipts.Size = new Size(92, 44);
             btnUploadReceipts.TabIndex = 13;
             btnUploadReceipts.Text = "UPLOAD RECEIPTS";
             btnUploadReceipts.UseVisualStyleBackColor = true;
+            btnUploadReceipts.Click += btnUploadReceipts_Click;
             // 
             // labelPOA
             // 
             labelPOA.AutoSize = true;
             labelPOA.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            labelPOA.Location = new Point(73, 87);
+            labelPOA.Location = new Point(64, 65);
             labelPOA.Name = "labelPOA";
-            labelPOA.Size = new Size(136, 20);
+            labelPOA.Size = new Size(105, 15);
             labelPOA.TabIndex = 9;
             labelPOA.Text = "POA SUMMARY";
             // 
             // dgvReimbursementEntry
             // 
+            dgvReimbursementEntry.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvReimbursementEntry.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvReimbursementEntry.Location = new Point(61, 353);
-            dgvReimbursementEntry.Margin = new Padding(3, 4, 3, 4);
+            dgvReimbursementEntry.Location = new Point(53, 265);
             dgvReimbursementEntry.Name = "dgvReimbursementEntry";
             dgvReimbursementEntry.RowHeadersWidth = 51;
-            dgvReimbursementEntry.Size = new Size(761, 200);
+            dgvReimbursementEntry.Size = new Size(666, 150);
             dgvReimbursementEntry.TabIndex = 12;
             // 
             // dgvPOAsummary
             // 
             dgvPOAsummary.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvPOAsummary.Location = new Point(61, 108);
-            dgvPOAsummary.Margin = new Padding(3, 4, 3, 4);
+            dgvPOAsummary.Location = new Point(53, 81);
             dgvPOAsummary.Name = "dgvPOAsummary";
             dgvPOAsummary.RowHeadersWidth = 51;
-            dgvPOAsummary.Size = new Size(761, 200);
+            dgvPOAsummary.Size = new Size(666, 150);
             dgvPOAsummary.TabIndex = 10;
             // 
             // ReimbursementFormStudent
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(932, 697);
+            ClientSize = new Size(816, 523);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(3, 4, 3, 4);
             Name = "ReimbursementFormStudent";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "ReimbursementFormStudent";
+            Load += ReimbursementFormStudent_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvReimbursementEntry).EndInit();

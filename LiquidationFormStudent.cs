@@ -14,16 +14,40 @@ namespace Project_SIGMA__A_Budget_Request_Application_
 {
     public partial class LiquidationFormStudent : Form
     {
+        private DataTable liquidationTable;
         public LiquidationFormStudent()
         {
             InitializeComponent();
         }
 
+        private void LoadBudgetSummary()
+        {
+          /*  using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                SqlDataAdapter da = new SqlDataAdapter(
+                    "SELECT RequestID, EventTitle, ApprovedBudget, DateRequested FROM BudgetRequests WHERE Status = 'Approved' AND StudentID = @StudentID", conn);
+
+                da.SelectCommand.Parameters.AddWithValue("@StudentID", currentStudentID); // pass this in from login/session
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+
+                dgvBudgetSummary.DataSource = dt;
+                dgvBudgetSummary.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            } */
+        }
         private void LiquidationFormStudent_Load(object sender, EventArgs e)
         {
+            liquidationTable = new DataTable();
+            liquidationTable.Columns.Add("FileName");
+            liquidationTable.Columns.Add("FilePath");
+            liquidationTable.Columns.Add("DateSubmitted");
+            liquidationTable.Columns.Add("Status");
+
+            dgvLiquidationSummary.DataSource = liquidationTable;            
+            dgvLiquidationSummary.Columns["FilePath"].Visible = false;
             cmbPOA.Items.AddRange(new string[]
                 {
-                    "Tech Talk",
+                    "Tech Talk",        
                     "Hackathon 2025",
                     "College Week"
                 });
@@ -52,8 +76,8 @@ namespace Project_SIGMA__A_Budget_Request_Application_
             {
                 foreach (string file in openFile.FileNames)
                 {
-                    // You can add logic to preview or store the file paths, FOR LATER
-                    MessageBox.Show($"Uploaded: {Path.GetFileName(file)}");
+                    string fileName = Path.GetFileName(file);
+                    dgvLiquidationSummary.Rows.Add(fileName, file, DateTime.Now.ToString("yyyy-MM-dd HH:mm"), "Pending");
                 }
             }
         }
@@ -65,12 +89,39 @@ namespace Project_SIGMA__A_Budget_Request_Application_
                 MessageBox.Show("Please select from POA before submitting.");
                 return;
             }
-            MessageBox.Show("Liquidation report submitted successfully!");
+            if (dgvLiquidationSummary.Rows.Count == 0 || 
+                dgvLiquidationSummary.Rows.Cast<DataGridViewRow>().All(r => r.IsNewRow))
+            {
+                MessageBox.Show("Please files before submitting.");
+                return;
+            }
+
+
+
+                /*using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    foreach (DataGridViewRow row in dgvLiquidationSummary.Rows)
+                    {
+                        if (!row.IsNewRow)
+                        {
+                            // Insert logic here
+                        }
+                    }
+                }*/
+                MessageBox.Show("Liquidation report submitted successfully!");
         }
 
-        private void btnDashboard_Click(object sender, EventArgs e)
+        private void LiquidationGrid()
         {
-           
+            dgvLiquidationSummary.Columns.Clear();
+            dgvLiquidationSummary.Columns.Add("FileName", "File Name");
+            dgvLiquidationSummary.Columns.Add("FilePath", "File Path");
+            dgvLiquidationSummary.Columns.Add("DateSubmitted", "Date Uploaded");
+            dgvLiquidationSummary.Columns.Add("Status", "Status");
+
+            dgvLiquidationSummary.Columns["FilePath"].Visible = false;
+        
         }
     }
 }

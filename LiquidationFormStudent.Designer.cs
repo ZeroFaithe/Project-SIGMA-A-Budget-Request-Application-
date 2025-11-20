@@ -44,9 +44,9 @@
             // 
             labelSelectFromPOA.AutoSize = true;
             labelSelectFromPOA.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            labelSelectFromPOA.Location = new Point(11, 25);
+            labelSelectFromPOA.Location = new Point(10, 19);
             labelSelectFromPOA.Name = "labelSelectFromPOA";
-            labelSelectFromPOA.Size = new Size(308, 20);
+            labelSelectFromPOA.Size = new Size(240, 15);
             labelSelectFromPOA.TabIndex = 6;
             labelSelectFromPOA.Text = "SELECT FROM BUDGET REQUESTS:";
             // 
@@ -60,48 +60,48 @@
             panel1.Controls.Add(btnSubmitReport);
             panel1.Controls.Add(btnUploadReceipts);
             panel1.Location = new Point(3, 2);
-            panel1.Margin = new Padding(3, 4, 3, 4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(934, 744);
+            panel1.Size = new Size(817, 558);
             panel1.TabIndex = 7;
             // 
             // cmbPOA
             // 
             cmbPOA.FormattingEnabled = true;
-            cmbPOA.Location = new Point(325, 20);
-            cmbPOA.Margin = new Padding(3, 4, 3, 4);
+            cmbPOA.Location = new Point(284, 15);
             cmbPOA.Name = "cmbPOA";
-            cmbPOA.Size = new Size(221, 28);
+            cmbPOA.Size = new Size(194, 23);
             cmbPOA.TabIndex = 8;
             // 
             // dgvLiquidationSummary
             // 
+            dgvLiquidationSummary.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvLiquidationSummary.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvLiquidationSummary.Location = new Point(50, 327);
-            dgvLiquidationSummary.Margin = new Padding(3, 4, 3, 4);
+            dgvLiquidationSummary.Location = new Point(44, 245);
             dgvLiquidationSummary.Name = "dgvLiquidationSummary";
             dgvLiquidationSummary.RowHeadersWidth = 51;
-            dgvLiquidationSummary.Size = new Size(761, 210);
+            dgvLiquidationSummary.Size = new Size(666, 158);
             dgvLiquidationSummary.TabIndex = 12;
             // 
             // dgvBudgetSummary
             // 
+            dgvBudgetSummary.AllowUserToAddRows = false;
+            dgvBudgetSummary.AllowUserToDeleteRows = false;
+            dgvBudgetSummary.AllowUserToResizeRows = false;
+            dgvBudgetSummary.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvBudgetSummary.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvBudgetSummary.Location = new Point(50, 107);
-            dgvBudgetSummary.Margin = new Padding(3, 4, 3, 4);
+            dgvBudgetSummary.Location = new Point(44, 80);
             dgvBudgetSummary.Name = "dgvBudgetSummary";
             dgvBudgetSummary.RowHeadersWidth = 51;
-            dgvBudgetSummary.Size = new Size(761, 185);
+            dgvBudgetSummary.Size = new Size(666, 139);
             dgvBudgetSummary.TabIndex = 11;
             // 
             // btnSubmitReport
             // 
             btnSubmitReport.BackColor = SystemColors.ControlLight;
             btnSubmitReport.Font = new Font("Arial Rounded MT Bold", 9F);
-            btnSubmitReport.Location = new Point(706, 571);
-            btnSubmitReport.Margin = new Padding(3, 4, 3, 4);
+            btnSubmitReport.Location = new Point(618, 428);
             btnSubmitReport.Name = "btnSubmitReport";
-            btnSubmitReport.Size = new Size(105, 59);
+            btnSubmitReport.Size = new Size(92, 44);
             btnSubmitReport.TabIndex = 10;
             btnSubmitReport.Text = "SUBMIT REPORT";
             btnSubmitReport.UseVisualStyleBackColor = false;
@@ -111,10 +111,9 @@
             // 
             btnUploadReceipts.BackColor = SystemColors.ControlLight;
             btnUploadReceipts.Font = new Font("Arial Rounded MT Bold", 9F);
-            btnUploadReceipts.Location = new Point(50, 571);
-            btnUploadReceipts.Margin = new Padding(3, 4, 3, 4);
+            btnUploadReceipts.Location = new Point(44, 428);
             btnUploadReceipts.Name = "btnUploadReceipts";
-            btnUploadReceipts.Size = new Size(105, 59);
+            btnUploadReceipts.Size = new Size(92, 44);
             btnUploadReceipts.TabIndex = 9;
             btnUploadReceipts.Text = "UPLOAD RECEIPTS";
             btnUploadReceipts.UseVisualStyleBackColor = false;
@@ -122,12 +121,12 @@
             // 
             // LiquidationFormStudent
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(932, 697);
+            ClientSize = new Size(816, 523);
             Controls.Add(panel1);
-            Margin = new Padding(3, 4, 3, 4);
             Name = "LiquidationFormStudent";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Liquidation Form";
             Load += LiquidationFormStudent_Load;
             panel1.ResumeLayout(false);

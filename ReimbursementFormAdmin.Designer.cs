@@ -47,19 +47,18 @@
             // cmbPOA
             // 
             cmbPOA.FormattingEnabled = true;
-            cmbPOA.Location = new Point(618, 104);
-            cmbPOA.Margin = new Padding(3, 4, 3, 4);
+            cmbPOA.Location = new Point(541, 78);
             cmbPOA.Name = "cmbPOA";
-            cmbPOA.Size = new Size(223, 28);
+            cmbPOA.Size = new Size(196, 23);
             cmbPOA.TabIndex = 0;
             // 
             // labelFile
             // 
             labelFile.AutoSize = true;
             labelFile.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            labelFile.Location = new Point(108, 155);
+            labelFile.Location = new Point(94, 116);
             labelFile.Name = "labelFile";
-            labelFile.Size = new Size(45, 20);
+            labelFile.Size = new Size(36, 15);
             labelFile.TabIndex = 22;
             labelFile.Text = "FILE";
             // 
@@ -67,9 +66,9 @@
             // 
             labelDateSubmitted.AutoSize = true;
             labelDateSubmitted.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            labelDateSubmitted.Location = new Point(369, 155);
+            labelDateSubmitted.Location = new Point(323, 116);
             labelDateSubmitted.Name = "labelDateSubmitted";
-            labelDateSubmitted.Size = new Size(161, 20);
+            labelDateSubmitted.Size = new Size(124, 15);
             labelDateSubmitted.TabIndex = 23;
             labelDateSubmitted.Text = "DATE SUBMITTED";
             // 
@@ -77,29 +76,29 @@
             // 
             labelStatus.AutoSize = true;
             labelStatus.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            labelStatus.Location = new Point(737, 154);
+            labelStatus.Location = new Point(645, 116);
             labelStatus.Name = "labelStatus";
-            labelStatus.Size = new Size(78, 20);
+            labelStatus.Size = new Size(60, 15);
             labelStatus.TabIndex = 24;
             labelStatus.Text = "STATUS";
             // 
             // dgvReimbursements
             // 
+            dgvReimbursements.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvReimbursements.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvReimbursements.Location = new Point(53, 195);
-            dgvReimbursements.Margin = new Padding(3, 4, 3, 4);
+            dgvReimbursements.Location = new Point(46, 146);
             dgvReimbursements.Name = "dgvReimbursements";
             dgvReimbursements.RowHeadersWidth = 51;
-            dgvReimbursements.Size = new Size(789, 200);
+            dgvReimbursements.Size = new Size(690, 150);
             dgvReimbursements.TabIndex = 25;
             // 
             // labelRemarks
             // 
             labelRemarks.AutoSize = true;
             labelRemarks.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            labelRemarks.Location = new Point(53, 459);
+            labelRemarks.Location = new Point(46, 344);
             labelRemarks.Name = "labelRemarks";
-            labelRemarks.Size = new Size(333, 20);
+            labelRemarks.Size = new Size(260, 15);
             labelRemarks.TabIndex = 30;
             labelRemarks.Text = "REMARKS/COMMENTS/ SUGGESTIONS";
             // 
@@ -117,28 +116,25 @@
             panel1.Controls.Add(dgvReimbursements);
             panel1.Controls.Add(labelFile);
             panel1.Location = new Point(1, 2);
-            panel1.Margin = new Padding(3, 4, 3, 4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(931, 775);
+            panel1.Size = new Size(815, 581);
             panel1.TabIndex = 15;
             // 
             // txtRemarks
             // 
-            txtRemarks.Location = new Point(53, 502);
-            txtRemarks.Margin = new Padding(3, 4, 3, 4);
+            txtRemarks.Location = new Point(46, 376);
             txtRemarks.Multiline = true;
             txtRemarks.Name = "txtRemarks";
-            txtRemarks.Size = new Size(471, 136);
+            txtRemarks.Size = new Size(413, 103);
             txtRemarks.TabIndex = 33;
             // 
             // btnDeclineReport
             // 
             btnDeclineReport.BackColor = SystemColors.ControlLight;
             btnDeclineReport.Font = new Font("Arial Rounded MT Bold", 9F);
-            btnDeclineReport.Location = new Point(568, 580);
-            btnDeclineReport.Margin = new Padding(3, 4, 3, 4);
+            btnDeclineReport.Location = new Point(497, 435);
             btnDeclineReport.Name = "btnDeclineReport";
-            btnDeclineReport.Size = new Size(105, 59);
+            btnDeclineReport.Size = new Size(92, 44);
             btnDeclineReport.TabIndex = 32;
             btnDeclineReport.Text = "DECLINE REPORT";
             btnDeclineReport.UseVisualStyleBackColor = false;
@@ -147,10 +143,9 @@
             // 
             btnApproveReport.BackColor = SystemColors.ControlLight;
             btnApproveReport.Font = new Font("Arial Rounded MT Bold", 9F);
-            btnApproveReport.Location = new Point(568, 502);
-            btnApproveReport.Margin = new Padding(3, 4, 3, 4);
+            btnApproveReport.Location = new Point(497, 376);
             btnApproveReport.Name = "btnApproveReport";
-            btnApproveReport.Size = new Size(105, 59);
+            btnApproveReport.Size = new Size(92, 44);
             btnApproveReport.TabIndex = 31;
             btnApproveReport.Text = "APPROVE REPORT";
             btnApproveReport.UseVisualStyleBackColor = false;
@@ -159,22 +154,20 @@
             // 
             btnSaveReport.BackColor = SystemColors.ControlLight;
             btnSaveReport.Font = new Font("Arial Rounded MT Bold", 9F);
-            btnSaveReport.Location = new Point(737, 502);
-            btnSaveReport.Margin = new Padding(3, 4, 3, 4);
+            btnSaveReport.Location = new Point(645, 376);
             btnSaveReport.Name = "btnSaveReport";
-            btnSaveReport.Size = new Size(105, 59);
+            btnSaveReport.Size = new Size(92, 44);
             btnSaveReport.TabIndex = 30;
             btnSaveReport.Text = "SAVE REPORT AS";
             btnSaveReport.UseVisualStyleBackColor = false;
             // 
             // ReimbursementFormAdmin
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(933, 778);
+            ClientSize = new Size(816, 584);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(3, 4, 3, 4);
             Name = "ReimbursementFormAdmin";
             Text = "Reimbursement Form";
             ((System.ComponentModel.ISupportInitialize)dgvReimbursements).EndInit();
