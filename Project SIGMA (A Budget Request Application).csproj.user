@@ -2,49 +2,55 @@
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup />
   <ItemGroup>
-    <Compile Update="BudgetRequest.cs">
+    <Compile Update="Resources\Admin\BudgetRequestAdmin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="BudgetRequestForm1.cs">
+    <Compile Update="Resources\Admin\LiquidationAdmin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="BudgetRequestForm2.cs">
+    <Compile Update="Resources\Admin\POAAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Resources\Admin\ViewBudgetDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Resources\Student\BudgetRequest.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Dashboard Form.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="AdminFrame.cs">
+    <Compile Update="Resources\Admin\AdminFrame.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="LiquidationFormAdmin.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="LiquidationFormStudent.cs">
+    <Compile Update="Resources\Student\LiquidationFormStudent.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="ManagePOA.cs">
+    <Compile Update="Resources\Student\ManageBudget.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="POAEntry.cs">
+    <Compile Update="Resources\Student\ManagePOA.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Resources\Student\POAEntry.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="RegisterForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="ReimbursementFormAdmin.cs">
+    <Compile Update="Resources\Student\ReceiptForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="ReimbursementFormStudent.cs">
+    <Compile Update="Resources\Student\ReimbursementFormStudent.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="RoleSelector.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="StudentFrame.cs">
+    <Compile Update="Resources\Student\StudentFrame.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
