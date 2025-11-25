@@ -113,10 +113,5 @@ namespace Project_SIGMA__A_Budget_Request_Application_
                 MessageBox.Show("An error occurred while trying to log in: " + ex.Message, "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        private void LoginForm_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

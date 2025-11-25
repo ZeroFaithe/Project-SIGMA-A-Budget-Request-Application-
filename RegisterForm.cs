@@ -29,22 +29,38 @@ namespace Project_SIGMA__A_Budget_Request_Application_
 
         private void passHidden_Click(object sender, EventArgs e)
         {
-
+            passHidden.Hide();
+            passHidden.Enabled = false;
+            passwordTxt.UseSystemPasswordChar = false;
+            passShown.Show();
+            passShown.Enabled = true;
         }
 
         private void passShown_Click(object sender, EventArgs e)
         {
-
+            passShown.Hide();
+            passShown.Enabled = false;
+            passwordTxt.UseSystemPasswordChar = true;
+            passHidden.Show();
+            passHidden.Enabled = true;
         }
 
         private void confirmHidden_Click(object sender, EventArgs e)
         {
-
+            confirmHidden.Hide();
+            confirmHidden.Enabled = false;
+            confirmPassTxt.UseSystemPasswordChar = false;
+            confirmShow.Show();
+            confirmShow.Enabled = true;
         }
 
         private void confirmShow_Click(object sender, EventArgs e)
         {
-
+            confirmShow.Hide();
+            confirmShow.Enabled = false;
+            confirmPassTxt.UseSystemPasswordChar = true;
+            confirmHidden.Show();
+            confirmHidden.Enabled = true;
         }
 
         private void registerBtn_Click(object sender, EventArgs e)

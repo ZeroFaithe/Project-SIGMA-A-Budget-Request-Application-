@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             dgvRemarks = new DataGridView();
             label1 = new Label();
             btnRejected = new Button();
@@ -46,20 +48,40 @@
             // 
             // dgvRemarks
             // 
+            dgvRemarks.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(160, 5, 0);
+            dataGridViewCellStyle1.Font = new Font("Franklin Gothic Heavy", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvRemarks.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvRemarks.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvRemarks.Location = new Point(40, 651);
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dgvRemarks.DefaultCellStyle = dataGridViewCellStyle2;
+            dgvRemarks.EnableHeadersVisualStyles = false;
+            dgvRemarks.Location = new Point(32, 521);
+            dgvRemarks.Margin = new Padding(2);
             dgvRemarks.Name = "dgvRemarks";
             dgvRemarks.RowHeadersWidth = 62;
-            dgvRemarks.Size = new Size(1066, 141);
+            dgvRemarks.Size = new Size(853, 113);
             dgvRemarks.TabIndex = 19;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(39, 617);
+            label1.Location = new Point(31, 494);
+            label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(153, 22);
+            label1.Size = new Size(131, 18);
             label1.TabIndex = 18;
             label1.Text = "ADMIN REMARKS";
             // 
@@ -69,10 +91,10 @@
             btnRejected.FlatAppearance.BorderSize = 0;
             btnRejected.FlatStyle = FlatStyle.Flat;
             btnRejected.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnRejected.Location = new Point(428, 21);
+            btnRejected.Location = new Point(342, 17);
             btnRejected.Margin = new Padding(0);
             btnRejected.Name = "btnRejected";
-            btnRejected.Size = new Size(130, 42);
+            btnRejected.Size = new Size(104, 34);
             btnRejected.TabIndex = 17;
             btnRejected.Text = "REJECTED";
             btnRejected.UseVisualStyleBackColor = false;
@@ -84,10 +106,10 @@
             btnToRevise.FlatAppearance.BorderSize = 0;
             btnToRevise.FlatStyle = FlatStyle.Flat;
             btnToRevise.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnToRevise.Location = new Point(298, 21);
+            btnToRevise.Location = new Point(238, 17);
             btnToRevise.Margin = new Padding(0);
             btnToRevise.Name = "btnToRevise";
-            btnToRevise.Size = new Size(130, 42);
+            btnToRevise.Size = new Size(104, 34);
             btnToRevise.TabIndex = 16;
             btnToRevise.Text = "TO REVISE";
             btnToRevise.UseVisualStyleBackColor = false;
@@ -99,10 +121,10 @@
             btnPending.FlatAppearance.BorderSize = 0;
             btnPending.FlatStyle = FlatStyle.Flat;
             btnPending.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnPending.Location = new Point(169, 21);
+            btnPending.Location = new Point(135, 17);
             btnPending.Margin = new Padding(0);
             btnPending.Name = "btnPending";
-            btnPending.Size = new Size(130, 42);
+            btnPending.Size = new Size(104, 34);
             btnPending.TabIndex = 15;
             btnPending.Text = "PENDING";
             btnPending.UseVisualStyleBackColor = false;
@@ -114,10 +136,10 @@
             btnApproved.FlatAppearance.BorderSize = 0;
             btnApproved.FlatStyle = FlatStyle.Flat;
             btnApproved.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnApproved.Location = new Point(39, 21);
+            btnApproved.Location = new Point(31, 17);
             btnApproved.Margin = new Padding(0);
             btnApproved.Name = "btnApproved";
-            btnApproved.Size = new Size(130, 42);
+            btnApproved.Size = new Size(104, 34);
             btnApproved.TabIndex = 14;
             btnApproved.Text = "APPROVED";
             btnApproved.UseVisualStyleBackColor = false;
@@ -127,9 +149,10 @@
             // 
             btnPOANewEntry.BackColor = Color.FromArgb(255, 128, 128);
             btnPOANewEntry.Font = new Font("Century Gothic", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnPOANewEntry.Location = new Point(904, 813);
+            btnPOANewEntry.Location = new Point(723, 650);
+            btnPOANewEntry.Margin = new Padding(2);
             btnPOANewEntry.Name = "btnPOANewEntry";
-            btnPOANewEntry.Size = new Size(202, 83);
+            btnPOANewEntry.Size = new Size(162, 66);
             btnPOANewEntry.TabIndex = 13;
             btnPOANewEntry.Text = "ADD NEW ENTRY";
             btnPOANewEntry.UseVisualStyleBackColor = false;
@@ -139,9 +162,10 @@
             // 
             btnEditRequest.BackColor = Color.PowderBlue;
             btnEditRequest.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnEditRequest.Location = new Point(40, 813);
+            btnEditRequest.Location = new Point(32, 650);
+            btnEditRequest.Margin = new Padding(2);
             btnEditRequest.Name = "btnEditRequest";
-            btnEditRequest.Size = new Size(209, 83);
+            btnEditRequest.Size = new Size(167, 66);
             btnEditRequest.TabIndex = 12;
             btnEditRequest.Text = "EDIT ENTRY";
             btnEditRequest.UseVisualStyleBackColor = false;
@@ -149,38 +173,49 @@
             // 
             // dgvMyRequests
             // 
+            dgvMyRequests.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvMyRequests.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvMyRequests.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvMyRequests.Location = new Point(40, 64);
+            dgvMyRequests.DefaultCellStyle = dataGridViewCellStyle2;
+            dgvMyRequests.EnableHeadersVisualStyles = false;
+            dgvMyRequests.Location = new Point(32, 51);
+            dgvMyRequests.Margin = new Padding(2);
             dgvMyRequests.Name = "dgvMyRequests";
             dgvMyRequests.RowHeadersWidth = 62;
-            dgvMyRequests.Size = new Size(1066, 247);
+            dgvMyRequests.Size = new Size(853, 198);
             dgvMyRequests.TabIndex = 11;
             dgvMyRequests.CellClick += dgvMyRequests_CellClick;
             // 
             // dgvBreakdown
             // 
+            dgvBreakdown.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvBreakdown.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvBreakdown.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvBreakdown.Location = new Point(39, 350);
+            dgvBreakdown.DefaultCellStyle = dataGridViewCellStyle2;
+            dgvBreakdown.EnableHeadersVisualStyles = false;
+            dgvBreakdown.Location = new Point(31, 280);
+            dgvBreakdown.Margin = new Padding(2);
             dgvBreakdown.Name = "dgvBreakdown";
             dgvBreakdown.RowHeadersWidth = 62;
-            dgvBreakdown.Size = new Size(1066, 247);
+            dgvBreakdown.Size = new Size(853, 198);
             dgvBreakdown.TabIndex = 20;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(40, 325);
+            label2.Location = new Point(32, 260);
+            label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
-            label2.Size = new Size(192, 22);
+            label2.Size = new Size(164, 18);
             label2.TabIndex = 21;
             label2.Text = "BUDGET BREAKDOWN";
             // 
             // ManageBudget
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1144, 916);
+            ClientSize = new Size(915, 733);
             Controls.Add(label2);
             Controls.Add(dgvBreakdown);
             Controls.Add(dgvRemarks);
@@ -193,6 +228,7 @@
             Controls.Add(btnEditRequest);
             Controls.Add(dgvMyRequests);
             FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(2);
             Name = "ManageBudget";
             Text = "ManageBudget";
             ((System.ComponentModel.ISupportInitialize)dgvRemarks).EndInit();

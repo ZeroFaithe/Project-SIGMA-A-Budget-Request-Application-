@@ -28,15 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BudgetRequest));
             btnSubmitRequest = new Button();
             btnPrint = new Button();
             dgvParticulars = new DataGridView();
-            colItem = new DataGridViewTextBoxColumn();
-            colQty = new DataGridViewTextBoxColumn();
-            colAmount = new DataGridViewTextBoxColumn();
-            colSupplier = new DataGridViewTextBoxColumn();
-            colTotal = new DataGridViewTextBoxColumn();
             cmbApprovedEvents = new ComboBox();
             label1 = new Label();
             panel1 = new Panel();
@@ -63,6 +60,11 @@
             printDocument1 = new System.Drawing.Printing.PrintDocument();
             printPreviewDialog1 = new PrintPreviewDialog();
             btnClose = new Button();
+            colItem = new DataGridViewTextBoxColumn();
+            colQty = new DataGridViewTextBoxColumn();
+            colAmount = new DataGridViewTextBoxColumn();
+            colSupplier = new DataGridViewTextBoxColumn();
+            colTotal = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dgvParticulars).BeginInit();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -74,9 +76,10 @@
             btnSubmitRequest.Enabled = false;
             btnSubmitRequest.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnSubmitRequest.ForeColor = Color.White;
-            btnSubmitRequest.Location = new Point(953, 861);
+            btnSubmitRequest.Location = new Point(762, 689);
+            btnSubmitRequest.Margin = new Padding(2);
             btnSubmitRequest.Name = "btnSubmitRequest";
-            btnSubmitRequest.Size = new Size(187, 83);
+            btnSubmitRequest.Size = new Size(150, 66);
             btnSubmitRequest.TabIndex = 12;
             btnSubmitRequest.Text = "SAVE CHANGES";
             btnSubmitRequest.UseVisualStyleBackColor = false;
@@ -86,9 +89,10 @@
             // 
             btnPrint.BackColor = Color.FromArgb(255, 128, 128);
             btnPrint.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnPrint.Location = new Point(22, 851);
+            btnPrint.Location = new Point(18, 681);
+            btnPrint.Margin = new Padding(2);
             btnPrint.Name = "btnPrint";
-            btnPrint.Size = new Size(214, 83);
+            btnPrint.Size = new Size(171, 66);
             btnPrint.TabIndex = 10;
             btnPrint.Text = "SAVE AS PDF";
             btnPrint.UseVisualStyleBackColor = false;
@@ -96,58 +100,43 @@
             // 
             // dgvParticulars
             // 
+            dgvParticulars.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(160, 5, 0);
+            dataGridViewCellStyle1.Font = new Font("Franklin Gothic Heavy", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvParticulars.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvParticulars.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvParticulars.Columns.AddRange(new DataGridViewColumn[] { colItem, colQty, colAmount, colSupplier, colTotal });
-            dgvParticulars.Location = new Point(22, 457);
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dgvParticulars.DefaultCellStyle = dataGridViewCellStyle2;
+            dgvParticulars.EnableHeadersVisualStyles = false;
+            dgvParticulars.Location = new Point(18, 366);
+            dgvParticulars.Margin = new Padding(2);
             dgvParticulars.Name = "dgvParticulars";
             dgvParticulars.RowHeadersWidth = 62;
-            dgvParticulars.Size = new Size(1118, 313);
+            dgvParticulars.Size = new Size(894, 250);
             dgvParticulars.TabIndex = 9;
             dgvParticulars.CellEndEdit += dgvParticulars_CellEndEdit;
-            // 
-            // colItem
-            // 
-            colItem.HeaderText = "Item Name";
-            colItem.MinimumWidth = 8;
-            colItem.Name = "colItem";
-            colItem.Width = 150;
-            // 
-            // colQty
-            // 
-            colQty.HeaderText = "Quantity";
-            colQty.MinimumWidth = 8;
-            colQty.Name = "colQty";
-            colQty.Width = 150;
-            // 
-            // colAmount
-            // 
-            colAmount.HeaderText = "Amount";
-            colAmount.MinimumWidth = 8;
-            colAmount.Name = "colAmount";
-            colAmount.Width = 150;
-            // 
-            // colSupplier
-            // 
-            colSupplier.HeaderText = "Supplier";
-            colSupplier.MinimumWidth = 8;
-            colSupplier.Name = "colSupplier";
-            colSupplier.Width = 150;
-            // 
-            // colTotal
-            // 
-            colTotal.HeaderText = "Total";
-            colTotal.MinimumWidth = 8;
-            colTotal.Name = "colTotal";
-            colTotal.Width = 150;
             // 
             // cmbApprovedEvents
             // 
             cmbApprovedEvents.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbApprovedEvents.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cmbApprovedEvents.FormattingEnabled = true;
-            cmbApprovedEvents.Location = new Point(22, 46);
+            cmbApprovedEvents.Location = new Point(18, 37);
+            cmbApprovedEvents.Margin = new Padding(2);
             cmbApprovedEvents.Name = "cmbApprovedEvents";
-            cmbApprovedEvents.Size = new Size(862, 29);
+            cmbApprovedEvents.Size = new Size(690, 28);
             cmbApprovedEvents.TabIndex = 13;
             cmbApprovedEvents.SelectedIndexChanged += cmbApprovedEvents_SelectedIndexChanged_1;
             // 
@@ -155,9 +144,10 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(22, 21);
+            label1.Location = new Point(18, 17);
+            label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(309, 22);
+            label1.Size = new Size(262, 18);
             label1.TabIndex = 14;
             label1.Text = "SELECT APPROVED ACTIVITY/EVENT:";
             // 
@@ -171,9 +161,10 @@
             panel1.Controls.Add(label5);
             panel1.Controls.Add(label4);
             panel1.Controls.Add(label2);
-            panel1.Location = new Point(22, 139);
+            panel1.Location = new Point(18, 111);
+            panel1.Margin = new Padding(2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(544, 138);
+            panel1.Size = new Size(436, 111);
             panel1.TabIndex = 15;
             // 
             // lblRemainingBalance
@@ -181,9 +172,10 @@
             lblRemainingBalance.AutoSize = true;
             lblRemainingBalance.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblRemainingBalance.ForeColor = Color.ForestGreen;
-            lblRemainingBalance.Location = new Point(269, 74);
+            lblRemainingBalance.Location = new Point(215, 59);
+            lblRemainingBalance.Margin = new Padding(2, 0, 2, 0);
             lblRemainingBalance.Name = "lblRemainingBalance";
-            lblRemainingBalance.Size = new Size(170, 22);
+            lblRemainingBalance.Size = new Size(143, 18);
             lblRemainingBalance.TabIndex = 22;
             lblRemainingBalance.Text = "Remaining Budget";
             // 
@@ -191,9 +183,10 @@
             // 
             lblDate.AutoSize = true;
             lblDate.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblDate.Location = new Point(269, 12);
+            lblDate.Location = new Point(215, 10);
+            lblDate.Margin = new Padding(2, 0, 2, 0);
             lblDate.Name = "lblDate";
-            lblDate.Size = new Size(52, 22);
+            lblDate.Size = new Size(43, 18);
             lblDate.TabIndex = 21;
             lblDate.Text = "Date";
             // 
@@ -201,9 +194,10 @@
             // 
             lblTotalBudget.AutoSize = true;
             lblTotalBudget.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblTotalBudget.Location = new Point(269, 43);
+            lblTotalBudget.Location = new Point(215, 34);
+            lblTotalBudget.Margin = new Padding(2, 0, 2, 0);
             lblTotalBudget.Name = "lblTotalBudget";
-            lblTotalBudget.Size = new Size(140, 22);
+            lblTotalBudget.Size = new Size(118, 18);
             lblTotalBudget.TabIndex = 20;
             lblTotalBudget.Text = "Activity Budget";
             lblTotalBudget.Click += lblTotalBudget_Click;
@@ -212,9 +206,10 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label6.Location = new Point(20, 74);
+            label6.Location = new Point(16, 59);
+            label6.Margin = new Padding(2, 0, 2, 0);
             label6.Name = "label6";
-            label6.Size = new Size(199, 22);
+            label6.Size = new Size(170, 18);
             label6.TabIndex = 19;
             label6.Text = "REMAINING BALANCE:";
             // 
@@ -222,9 +217,10 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label5.Location = new Point(20, 43);
+            label5.Location = new Point(16, 34);
+            label5.Margin = new Padding(2, 0, 2, 0);
             label5.Name = "label5";
-            label5.Size = new Size(220, 22);
+            label5.Size = new Size(183, 18);
             label5.TabIndex = 18;
             label5.Text = "TOTAL ACTIVITY BUDGET:";
             // 
@@ -232,9 +228,10 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(20, 14);
+            label4.Location = new Point(16, 11);
+            label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
-            label4.Size = new Size(58, 22);
+            label4.Size = new Size(48, 18);
             label4.TabIndex = 17;
             label4.Text = "DATE:";
             // 
@@ -242,9 +239,10 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(20, 24);
+            label2.Location = new Point(16, 19);
+            label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
-            label2.Size = new Size(0, 22);
+            label2.Size = new Size(0, 18);
             label2.TabIndex = 16;
             // 
             // panel2
@@ -255,17 +253,19 @@
             panel2.Controls.Add(label12);
             panel2.Controls.Add(label13);
             panel2.Controls.Add(label14);
-            panel2.Location = new Point(588, 139);
+            panel2.Location = new Point(470, 111);
+            panel2.Margin = new Padding(2);
             panel2.Name = "panel2";
-            panel2.Size = new Size(552, 138);
+            panel2.Size = new Size(442, 111);
             panel2.TabIndex = 23;
             // 
             // txtContactNumber
             // 
             txtContactNumber.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtContactNumber.Location = new Point(189, 87);
+            txtContactNumber.Location = new Point(151, 70);
+            txtContactNumber.Margin = new Padding(2);
             txtContactNumber.Name = "txtContactNumber";
-            txtContactNumber.Size = new Size(331, 30);
+            txtContactNumber.Size = new Size(266, 26);
             txtContactNumber.TabIndex = 24;
             txtContactNumber.TextChanged += textBox1_TextChanged;
             // 
@@ -273,18 +273,20 @@
             // 
             dtpDateNeeded.CalendarFont = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dtpDateNeeded.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dtpDateNeeded.Location = new Point(22, 45);
+            dtpDateNeeded.Location = new Point(18, 36);
+            dtpDateNeeded.Margin = new Padding(2);
             dtpDateNeeded.Name = "dtpDateNeeded";
-            dtpDateNeeded.Size = new Size(498, 30);
+            dtpDateNeeded.Size = new Size(399, 26);
             dtpDateNeeded.TabIndex = 23;
             // 
             // label12
             // 
             label12.AutoSize = true;
             label12.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label12.Location = new Point(22, 95);
+            label12.Location = new Point(18, 76);
+            label12.Margin = new Padding(2, 0, 2, 0);
             label12.Name = "label12";
-            label12.Size = new Size(138, 22);
+            label12.Size = new Size(115, 18);
             label12.TabIndex = 17;
             label12.Text = "CONTACT NO.:";
             // 
@@ -292,9 +294,10 @@
             // 
             label13.AutoSize = true;
             label13.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label13.Location = new Point(22, 17);
+            label13.Location = new Point(18, 14);
+            label13.Margin = new Padding(2, 0, 2, 0);
             label13.Name = "label13";
-            label13.Size = new Size(241, 22);
+            label13.Size = new Size(200, 18);
             label13.TabIndex = 16;
             label13.Text = "ACTUAL DATE OF ACTIVITY:";
             // 
@@ -302,18 +305,20 @@
             // 
             label14.AutoSize = true;
             label14.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label14.Location = new Point(20, 24);
+            label14.Location = new Point(16, 19);
+            label14.Margin = new Padding(2, 0, 2, 0);
             label14.Name = "label14";
-            label14.Size = new Size(0, 22);
+            label14.Size = new Size(0, 18);
             label14.TabIndex = 16;
             // 
             // label16
             // 
             label16.AutoSize = true;
             label16.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label16.Location = new Point(22, 98);
+            label16.Location = new Point(18, 78);
+            label16.Margin = new Padding(2, 0, 2, 0);
             label16.Name = "label16";
-            label16.Size = new Size(156, 22);
+            label16.Size = new Size(130, 18);
             label16.TabIndex = 24;
             label16.Text = "ACTIVITY DETAILS";
             // 
@@ -321,28 +326,31 @@
             // 
             label17.AutoSize = true;
             label17.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label17.Location = new Point(588, 98);
+            label17.Location = new Point(470, 78);
+            label17.Margin = new Padding(2, 0, 2, 0);
             label17.Name = "label17";
-            label17.Size = new Size(152, 22);
+            label17.Size = new Size(129, 18);
             label17.TabIndex = 25;
             label17.Text = "REQUEST DETAILS";
             // 
             // txtStudentRemarks
             // 
             txtStudentRemarks.Font = new Font("Century Gothic", 8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtStudentRemarks.Location = new Point(22, 317);
+            txtStudentRemarks.Location = new Point(18, 254);
+            txtStudentRemarks.Margin = new Padding(2);
             txtStudentRemarks.Multiline = true;
             txtStudentRemarks.Name = "txtStudentRemarks";
-            txtStudentRemarks.Size = new Size(1118, 99);
+            txtStudentRemarks.Size = new Size(895, 80);
             txtStudentRemarks.TabIndex = 27;
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(22, 285);
+            label3.Location = new Point(18, 228);
+            label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
-            label3.Size = new Size(168, 22);
+            label3.Size = new Size(140, 18);
             label3.TabIndex = 26;
             label3.Text = "ADDITIONAL INFO:";
             // 
@@ -350,9 +358,10 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label7.Location = new Point(22, 432);
+            label7.Location = new Point(18, 346);
+            label7.Margin = new Padding(2, 0, 2, 0);
             label7.Name = "label7";
-            label7.Size = new Size(127, 22);
+            label7.Size = new Size(107, 18);
             label7.TabIndex = 28;
             label7.Text = "PARTICULARS:";
             // 
@@ -360,9 +369,10 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label8.Location = new Point(728, 797);
+            label8.Location = new Point(582, 638);
+            label8.Margin = new Padding(2, 0, 2, 0);
             label8.Name = "label8";
-            label8.Size = new Size(144, 22);
+            label8.Size = new Size(121, 18);
             label8.TabIndex = 29;
             label8.Text = "TOTAL REQUEST:";
             // 
@@ -370,9 +380,10 @@
             // 
             lblGrandTotal.AutoSize = true;
             lblGrandTotal.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
-            lblGrandTotal.Location = new Point(893, 792);
+            lblGrandTotal.Location = new Point(714, 634);
+            lblGrandTotal.Margin = new Padding(2, 0, 2, 0);
             lblGrandTotal.Name = "lblGrandTotal";
-            lblGrandTotal.Size = new Size(81, 28);
+            lblGrandTotal.Size = new Size(67, 23);
             lblGrandTotal.TabIndex = 30;
             lblGrandTotal.Text = "₱ 0.00";
             // 
@@ -395,19 +406,50 @@
             // 
             btnClose.BackColor = Color.FromArgb(255, 128, 128);
             btnClose.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnClose.Location = new Point(953, 21);
+            btnClose.Location = new Point(762, 17);
+            btnClose.Margin = new Padding(2);
             btnClose.Name = "btnClose";
-            btnClose.Size = new Size(169, 54);
+            btnClose.Size = new Size(135, 43);
             btnClose.TabIndex = 31;
             btnClose.Text = "CANCEL";
             btnClose.UseVisualStyleBackColor = false;
             btnClose.Click += btnClose_Click;
             // 
+            // colItem
+            // 
+            colItem.HeaderText = "Item Name";
+            colItem.MinimumWidth = 6;
+            colItem.Name = "colItem";
+            // 
+            // colQty
+            // 
+            colQty.HeaderText = "Quantity";
+            colQty.MinimumWidth = 6;
+            colQty.Name = "colQty";
+            // 
+            // colAmount
+            // 
+            colAmount.HeaderText = "Amount";
+            colAmount.MinimumWidth = 6;
+            colAmount.Name = "colAmount";
+            // 
+            // colSupplier
+            // 
+            colSupplier.HeaderText = "Supplier";
+            colSupplier.MinimumWidth = 6;
+            colSupplier.Name = "colSupplier";
+            // 
+            // colTotal
+            // 
+            colTotal.HeaderText = "Total";
+            colTotal.MinimumWidth = 6;
+            colTotal.Name = "colTotal";
+            // 
             // BudgetRequest
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1166, 972);
+            ClientSize = new Size(933, 778);
             Controls.Add(btnClose);
             Controls.Add(lblGrandTotal);
             Controls.Add(label8);
@@ -424,6 +466,7 @@
             Controls.Add(btnPrint);
             Controls.Add(dgvParticulars);
             FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(2);
             Name = "BudgetRequest";
             Text = "BudgetRequest";
             ((System.ComponentModel.ISupportInitialize)dgvParticulars).EndInit();
@@ -465,13 +508,13 @@
         private Label label7;
         private Label label8;
         private Label lblGrandTotal;
+        private System.Drawing.Printing.PrintDocument printDocument1;
+        private PrintPreviewDialog printPreviewDialog1;
+        private Button btnClose;
         private DataGridViewTextBoxColumn colItem;
         private DataGridViewTextBoxColumn colQty;
         private DataGridViewTextBoxColumn colAmount;
         private DataGridViewTextBoxColumn colSupplier;
         private DataGridViewTextBoxColumn colTotal;
-        private System.Drawing.Printing.PrintDocument printDocument1;
-        private PrintPreviewDialog printPreviewDialog1;
-        private Button btnClose;
     }
 }

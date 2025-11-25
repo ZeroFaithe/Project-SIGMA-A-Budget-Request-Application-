@@ -51,7 +51,7 @@ namespace Project_SIGMA__A_Budget_Request_Application_.Resources.Admin
                     // Hide ID
                     if (dgvRequests.Columns["LiquidationID"] != null)
                         dgvRequests.Columns["LiquidationID"].Visible = false;
-                    
+
                     // Format Money Columns
                     if (dgvRequests.Columns["GrandTotalExpense"] != null)
                         dgvRequests.Columns["GrandTotalExpense"].DefaultCellStyle.Format = "C2";
@@ -72,9 +72,9 @@ namespace Project_SIGMA__A_Budget_Request_Application_.Resources.Admin
                 {
                     _selectedLiquidationID = Convert.ToInt32(row.Cells["LiquidationID"].Value);
                     LoadReceipts(_selectedLiquidationID);
-                    
+
                     // Clear previous image since we changed reports
-                    pbReceipt.Image = null; 
+                    pbReceipt.Image = null;
                 }
             }
         }
@@ -95,11 +95,11 @@ namespace Project_SIGMA__A_Budget_Request_Application_.Resources.Admin
                 adapter.Fill(dt);
 
                 dgvReceipts.DataSource = dt;
-                
+
                 // Hide DetailID
                 if (dgvReceipts.Columns["DetailID"] != null)
                     dgvReceipts.Columns["DetailID"].Visible = false;
-                
+
                 // Format Money
                 if (dgvReceipts.Columns["ActualExpense"] != null)
                     dgvReceipts.Columns["ActualExpense"].DefaultCellStyle.Format = "C2";
@@ -112,7 +112,7 @@ namespace Project_SIGMA__A_Budget_Request_Application_.Resources.Admin
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = dgvReceipts.Rows[e.RowIndex];
-                
+
                 if (row.Cells["DetailID"].Value != DBNull.Value)
                 {
                     int detailID = Convert.ToInt32(row.Cells["DetailID"].Value);
@@ -135,7 +135,7 @@ namespace Project_SIGMA__A_Budget_Request_Application_.Resources.Admin
                     if (result != DBNull.Value && result != null)
                     {
                         byte[] imageBytes = (byte[])result;
-                        
+
                         // Convert Bytes back to Image
                         using (MemoryStream ms = new MemoryStream(imageBytes))
                         {
@@ -182,7 +182,7 @@ namespace Project_SIGMA__A_Budget_Request_Application_.Resources.Admin
                     string remarkText = string.IsNullOrWhiteSpace(rtbRemarks.Text) ? "Processed." : rtbRemarks.Text;
                     string remQuery = @"INSERT INTO LiquidationRemarks (LiquidationID, Remark, StatusGiven) 
                                         VALUES (@ID, @Rem, @Stat)";
-                    
+
                     using (SqlCommand cmdRem = new SqlCommand(remQuery, conn, transaction))
                     {
                         cmdRem.Parameters.AddWithValue("@ID", _selectedLiquidationID);
@@ -193,7 +193,7 @@ namespace Project_SIGMA__A_Budget_Request_Application_.Resources.Admin
 
                     transaction.Commit();
                     MessageBox.Show("Success!");
-                    
+
                     // Reset UI
                     LoadRequests("Pending");
                     dgvReceipts.DataSource = null;
@@ -218,5 +218,20 @@ namespace Project_SIGMA__A_Budget_Request_Application_.Resources.Admin
         private void btnApprove_Click(object sender, EventArgs e) { ProcessDecision("Approved"); }
         private void btnReject_Click(object sender, EventArgs e) { ProcessDecision("Rejected"); }
         private void btnReviseAction_Click(object sender, EventArgs e) { ProcessDecision("To be Revised"); }
+
+        private void pbReceipt_Click(object sender, EventArgs e)
+        {
+            Form f = new Form();
+            f.WindowState = FormWindowState.Maximized;
+
+            PictureBox pb = new PictureBox();
+            pb.Dock = DockStyle.Fill;
+            pb.Image = pbReceipt.Image;
+            pb.SizeMode = PictureBoxSizeMode.Zoom;
+
+            f.Controls.Add(pb);
+            f.ShowDialog();
+
+        }
     }
 }

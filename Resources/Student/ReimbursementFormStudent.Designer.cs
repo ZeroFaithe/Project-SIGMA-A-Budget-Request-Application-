@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             panel1 = new Panel();
             labelSelectFromPOA = new Label();
             labelReimbursementEntry = new Label();
@@ -121,7 +123,25 @@
             // 
             // dgvReimbursementEntry
             // 
+            dgvReimbursementEntry.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(160, 5, 0);
+            dataGridViewCellStyle1.Font = new Font("Franklin Gothic Heavy", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvReimbursementEntry.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvReimbursementEntry.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dgvReimbursementEntry.DefaultCellStyle = dataGridViewCellStyle2;
+            dgvReimbursementEntry.EnableHeadersVisualStyles = false;
             dgvReimbursementEntry.Location = new Point(61, 353);
             dgvReimbursementEntry.Margin = new Padding(3, 4, 3, 4);
             dgvReimbursementEntry.Name = "dgvReimbursementEntry";
@@ -131,7 +151,11 @@
             // 
             // dgvPOAsummary
             // 
+            dgvPOAsummary.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvPOAsummary.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvPOAsummary.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvPOAsummary.DefaultCellStyle = dataGridViewCellStyle2;
+            dgvPOAsummary.EnableHeadersVisualStyles = false;
             dgvPOAsummary.Location = new Point(61, 108);
             dgvPOAsummary.Margin = new Padding(3, 4, 3, 4);
             dgvPOAsummary.Name = "dgvPOAsummary";

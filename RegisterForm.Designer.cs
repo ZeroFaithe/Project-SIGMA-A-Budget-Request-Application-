@@ -68,7 +68,6 @@
             passwordTxt.Font = new Font("Segoe UI", 13.8F);
             passwordTxt.Location = new Point(155, 334);
             passwordTxt.Name = "passwordTxt";
-            passwordTxt.PasswordChar = '*';
             passwordTxt.Size = new Size(396, 38);
             passwordTxt.TabIndex = 2;
             passwordTxt.UseSystemPasswordChar = true;
@@ -78,7 +77,6 @@
             confirmPassTxt.Font = new Font("Segoe UI", 13.8F);
             confirmPassTxt.Location = new Point(155, 424);
             confirmPassTxt.Name = "confirmPassTxt";
-            confirmPassTxt.PasswordChar = '*';
             confirmPassTxt.Size = new Size(396, 38);
             confirmPassTxt.TabIndex = 3;
             confirmPassTxt.UseSystemPasswordChar = true;
@@ -87,6 +85,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Franklin Gothic Demi", 22.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.White;
             label1.Location = new Point(257, 42);
             label1.Name = "label1";
             label1.Size = new Size(183, 43);
@@ -97,6 +96,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Arial Rounded MT Bold", 10.8F);
+            label2.ForeColor = Color.White;
             label2.Location = new Point(155, 118);
             label2.Name = "label2";
             label2.Size = new Size(115, 21);
@@ -107,6 +107,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Arial Rounded MT Bold", 10.8F);
+            label3.ForeColor = Color.White;
             label3.Location = new Point(155, 211);
             label3.Name = "label3";
             label3.Size = new Size(67, 21);
@@ -117,6 +118,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Arial Rounded MT Bold", 10.8F);
+            label4.ForeColor = Color.White;
             label4.Location = new Point(155, 301);
             label4.Name = "label4";
             label4.Size = new Size(116, 21);
@@ -127,6 +129,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Arial Rounded MT Bold", 10.8F);
+            label5.ForeColor = Color.White;
             label5.Location = new Point(155, 392);
             label5.Name = "label5";
             label5.Size = new Size(207, 21);
@@ -138,7 +141,7 @@
             loginBtn.FlatAppearance.BorderSize = 0;
             loginBtn.FlatStyle = FlatStyle.Flat;
             loginBtn.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
-            loginBtn.ForeColor = Color.DimGray;
+            loginBtn.ForeColor = Color.White;
             loginBtn.Location = new Point(403, 545);
             loginBtn.Name = "loginBtn";
             loginBtn.Size = new Size(75, 46);
@@ -151,7 +154,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold);
-            label6.ForeColor = Color.DimGray;
+            label6.ForeColor = Color.White;
             label6.Location = new Point(190, 556);
             label6.Name = "label6";
             label6.Size = new Size(220, 25);
@@ -227,6 +230,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(181, 58, 58);
             ClientSize = new Size(705, 602);
             Controls.Add(confirmShow);
             Controls.Add(confirmHidden);
@@ -245,7 +249,7 @@
             Controls.Add(emailTxt);
             Controls.Add(usernameTxt);
             Name = "RegisterForm";
-            Text = "Form1";
+            Text = "Project SIGMA: Register Page";
             ResumeLayout(false);
             PerformLayout();
         }

@@ -73,6 +73,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Franklin Gothic Demi", 28.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.White;
             label1.Location = new Point(293, 41);
             label1.Name = "label1";
             label1.Size = new Size(233, 54);
@@ -83,7 +84,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold);
-            label2.ForeColor = Color.DimGray;
+            label2.ForeColor = Color.White;
             label2.Location = new Point(235, 469);
             label2.Name = "label2";
             label2.Size = new Size(220, 25);
@@ -95,7 +96,7 @@
             loginBtn.FlatAppearance.BorderSize = 0;
             loginBtn.FlatStyle = FlatStyle.Flat;
             loginBtn.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
-            loginBtn.ForeColor = Color.DimGray;
+            loginBtn.ForeColor = Color.White;
             loginBtn.Location = new Point(448, 458);
             loginBtn.Name = "loginBtn";
             loginBtn.Size = new Size(75, 46);
@@ -108,6 +109,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(181, 58, 58);
             ClientSize = new Size(803, 537);
             Controls.Add(loginBtn);
             Controls.Add(label2);
@@ -116,7 +118,7 @@
             Controls.Add(repBtn);
             Controls.Add(adminBtn);
             Name = "RoleSelector";
-            Text = "Form1";
+            Text = "Project SIGMA Register Page";
             ResumeLayout(false);
             PerformLayout();
         }

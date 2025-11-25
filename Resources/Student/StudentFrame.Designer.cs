@@ -63,19 +63,18 @@
             panel1.Controls.Add(pictureBox1);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
-            panel1.Margin = new Padding(4, 5, 4, 5);
+            panel1.Margin = new Padding(3, 4, 3, 4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1474, 172);
+            panel1.Size = new Size(1179, 138);
             panel1.TabIndex = 0;
             // 
             // User
             // 
             User.AutoSize = true;
             User.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            User.Location = new Point(534, 83);
-            User.Margin = new Padding(4, 0, 4, 0);
+            User.Location = new Point(318, 54);
             User.Name = "User";
-            User.Size = new Size(129, 36);
+            User.Size = new Size(106, 28);
             User.TabIndex = 10;
             User.Text = "STUDENT";
             // 
@@ -84,9 +83,10 @@
             button1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             button1.BackColor = Color.White;
             button1.Font = new Font("Century Gothic", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.Location = new Point(1277, 80);
+            button1.Location = new Point(1022, 64);
+            button1.Margin = new Padding(2);
             button1.Name = "button1";
-            button1.Size = new Size(168, 50);
+            button1.Size = new Size(134, 40);
             button1.TabIndex = 9;
             button1.Text = "LOGOUT";
             button1.UseVisualStyleBackColor = false;
@@ -99,9 +99,9 @@
             panel3.Controls.Add(label1);
             panel3.Controls.Add(pictureBox6);
             panel3.Location = new Point(0, 0);
-            panel3.Margin = new Padding(4, 5, 4, 5);
+            panel3.Margin = new Padding(3, 4, 3, 4);
             panel3.Name = "panel3";
-            panel3.Size = new Size(286, 175);
+            panel3.Size = new Size(229, 140);
             panel3.TabIndex = 8;
             // 
             // label2
@@ -109,10 +109,9 @@
             label2.AutoSize = true;
             label2.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.White;
-            label2.Location = new Point(160, 105);
-            label2.Margin = new Padding(4, 0, 4, 0);
+            label2.Location = new Point(128, 84);
             label2.Name = "label2";
-            label2.Size = new Size(114, 28);
+            label2.Size = new Size(95, 23);
             label2.TabIndex = 10;
             label2.Text = "TRACKER";
             // 
@@ -121,20 +120,19 @@
             label1.AutoSize = true;
             label1.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(161, 62);
-            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Location = new Point(129, 50);
             label1.Name = "label1";
-            label1.Size = new Size(100, 28);
+            label1.Size = new Size(84, 23);
             label1.TabIndex = 9;
             label1.Text = "BUDGET";
             // 
             // pictureBox6
             // 
             pictureBox6.Image = (Image)resources.GetObject("pictureBox6.Image");
-            pictureBox6.Location = new Point(21, 52);
-            pictureBox6.Margin = new Padding(4, 5, 4, 5);
+            pictureBox6.Location = new Point(17, 42);
+            pictureBox6.Margin = new Padding(3, 4, 3, 4);
             pictureBox6.Name = "pictureBox6";
-            pictureBox6.Size = new Size(130, 92);
+            pictureBox6.Size = new Size(104, 74);
             pictureBox6.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox6.TabIndex = 7;
             pictureBox6.TabStop = false;
@@ -142,21 +140,21 @@
             // txtadmin
             // 
             txtadmin.AutoSize = true;
-            txtadmin.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txtadmin.Location = new Point(400, 83);
-            txtadmin.Margin = new Padding(4, 0, 4, 0);
+            txtadmin.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            txtadmin.ForeColor = Color.Gray;
+            txtadmin.Location = new Point(318, 85);
             txtadmin.Name = "txtadmin";
-            txtadmin.Size = new Size(137, 36);
+            txtadmin.Size = new Size(76, 19);
             txtadmin.TabIndex = 2;
-            txtadmin.Text = "STUDENT:";
+            txtadmin.Text = "STUDENT";
             // 
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(319, 65);
-            pictureBox1.Margin = new Padding(4, 5, 4, 5);
+            pictureBox1.Location = new Point(255, 52);
+            pictureBox1.Margin = new Padding(3, 4, 3, 4);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(68, 68);
+            pictureBox1.Size = new Size(54, 54);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 1;
             pictureBox1.TabStop = false;
@@ -170,11 +168,11 @@
             btnManagePOA.ForeColor = Color.White;
             btnManagePOA.Image = (Image)resources.GetObject("btnManagePOA.Image");
             btnManagePOA.ImageAlign = ContentAlignment.MiddleLeft;
-            btnManagePOA.Location = new Point(4, 132);
+            btnManagePOA.Location = new Point(3, 106);
             btnManagePOA.Margin = new Padding(0);
             btnManagePOA.Name = "btnManagePOA";
-            btnManagePOA.Padding = new Padding(14, 0, 0, 0);
-            btnManagePOA.Size = new Size(281, 92);
+            btnManagePOA.Padding = new Padding(11, 0, 0, 0);
+            btnManagePOA.Size = new Size(225, 74);
             btnManagePOA.TabIndex = 6;
             btnManagePOA.Text = "       MANAGE POA";
             btnManagePOA.UseVisualStyleBackColor = false;
@@ -188,11 +186,11 @@
             btnDashboard.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnDashboard.ForeColor = Color.White;
             btnDashboard.ImageAlign = ContentAlignment.MiddleLeft;
-            btnDashboard.Location = new Point(4, 10);
-            btnDashboard.Margin = new Padding(4, 5, 4, 5);
+            btnDashboard.Location = new Point(3, 8);
+            btnDashboard.Margin = new Padding(3, 4, 3, 4);
             btnDashboard.Name = "btnDashboard";
-            btnDashboard.Padding = new Padding(14, 0, 0, 0);
-            btnDashboard.Size = new Size(281, 92);
+            btnDashboard.Padding = new Padding(11, 0, 0, 0);
+            btnDashboard.Size = new Size(225, 74);
             btnDashboard.TabIndex = 7;
             btnDashboard.Text = "     DASHBOARD";
             btnDashboard.UseVisualStyleBackColor = false;
@@ -207,11 +205,11 @@
             btnBudgetRequest.ForeColor = Color.White;
             btnBudgetRequest.Image = (Image)resources.GetObject("btnBudgetRequest.Image");
             btnBudgetRequest.ImageAlign = ContentAlignment.MiddleLeft;
-            btnBudgetRequest.Location = new Point(4, 252);
-            btnBudgetRequest.Margin = new Padding(4, 5, 4, 5);
+            btnBudgetRequest.Location = new Point(3, 202);
+            btnBudgetRequest.Margin = new Padding(3, 4, 3, 4);
             btnBudgetRequest.Name = "btnBudgetRequest";
-            btnBudgetRequest.Padding = new Padding(14, 0, 0, 0);
-            btnBudgetRequest.Size = new Size(281, 92);
+            btnBudgetRequest.Padding = new Padding(11, 0, 0, 0);
+            btnBudgetRequest.Size = new Size(225, 74);
             btnBudgetRequest.TabIndex = 3;
             btnBudgetRequest.Text = "        BUDGET REQUEST";
             btnBudgetRequest.UseVisualStyleBackColor = false;
@@ -226,11 +224,11 @@
             btnLiquidation.ForeColor = Color.White;
             btnLiquidation.Image = (Image)resources.GetObject("btnLiquidation.Image");
             btnLiquidation.ImageAlign = ContentAlignment.MiddleLeft;
-            btnLiquidation.Location = new Point(4, 375);
-            btnLiquidation.Margin = new Padding(4, 5, 4, 5);
+            btnLiquidation.Location = new Point(3, 300);
+            btnLiquidation.Margin = new Padding(3, 4, 3, 4);
             btnLiquidation.Name = "btnLiquidation";
-            btnLiquidation.Padding = new Padding(14, 0, 0, 0);
-            btnLiquidation.Size = new Size(281, 92);
+            btnLiquidation.Padding = new Padding(11, 0, 0, 0);
+            btnLiquidation.Size = new Size(225, 74);
             btnLiquidation.TabIndex = 4;
             btnLiquidation.Text = "  SUBMIT REPORT";
             btnLiquidation.UseVisualStyleBackColor = false;
@@ -246,19 +244,19 @@
             panel2.Controls.Add(btnLiquidation);
             panel2.Controls.Add(pictureBox3);
             panel2.Dock = DockStyle.Left;
-            panel2.Location = new Point(0, 172);
-            panel2.Margin = new Padding(4, 5, 4, 5);
+            panel2.Location = new Point(0, 138);
+            panel2.Margin = new Padding(3, 4, 3, 4);
             panel2.Name = "panel2";
-            panel2.Size = new Size(286, 930);
+            panel2.Size = new Size(229, 764);
             panel2.TabIndex = 9;
             // 
             // pictureBox3
             // 
             pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
-            pictureBox3.Location = new Point(-48, 548);
-            pictureBox3.Margin = new Padding(4, 5, 4, 5);
+            pictureBox3.Location = new Point(-1, 506);
+            pictureBox3.Margin = new Padding(3, 4, 3, 4);
             pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(454, 460);
+            pictureBox3.Size = new Size(223, 244);
             pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox3.TabIndex = 11;
             pictureBox3.TabStop = false;
@@ -266,24 +264,24 @@
             // mainpanel
             // 
             mainpanel.Dock = DockStyle.Fill;
-            mainpanel.Location = new Point(286, 172);
+            mainpanel.Location = new Point(229, 138);
             mainpanel.Margin = new Padding(2);
             mainpanel.Name = "mainpanel";
-            mainpanel.Size = new Size(1188, 930);
+            mainpanel.Size = new Size(950, 764);
             mainpanel.TabIndex = 10;
             // 
             // StudentFrame
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1474, 1102);
+            ClientSize = new Size(1179, 902);
             Controls.Add(mainpanel);
             Controls.Add(panel2);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
-            Margin = new Padding(4, 5, 4, 5);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "StudentFrame";
-            Text = "Form1";
+            Text = "Project SIGMA: Budget Tracker";
             Load += Form1_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
