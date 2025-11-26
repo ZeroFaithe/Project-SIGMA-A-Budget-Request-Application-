@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
 using System.Data;
+using System.Globalization;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -207,12 +208,11 @@ namespace Project_SIGMA__A_Budget_Request_Application_
             List<string> categories = new List<string>();
             foreach (DataGridViewRow row in dgvBudgetBasis.Rows)
             {
-                // Assuming Col 0 = ItemName, Col 1 = Cost
-                // Adjust index [0] if your query order is different
+                if (row.IsNewRow) continue;
                 if (row.Cells[0].Value != null)
                     categories.Add(row.Cells[0].Value.ToString());
             }
-            categories.Add("Others"); // Always allow "Others"
+            categories.Add("Others");
 
             // B. Open Pop-up
             using (ReceiptForm frm = new ReceiptForm())
@@ -224,12 +224,25 @@ namespace Project_SIGMA__A_Budget_Request_Application_
                     ReceiptData newReceipt = frm.OutputData;
 
                     // C. Find Allotted Amount for this Category (for Math)
-                    decimal allotted = 0;
+                    decimal allotted = 0m;
                     foreach (DataGridViewRow row in dgvBudgetBasis.Rows)
                     {
-                        if (row.Cells[0].Value.ToString() == newReceipt.Category)
+                        if (row.IsNewRow) continue;                      // skip the add-new row
+                        var cell0 = row.Cells[0].Value;
+                        if (cell0 == null) continue;                    // skip empty cells
+
+                        string catName = cell0.ToString().Trim();
+                        if (string.Equals(catName, newReceipt.Category?.Trim(), StringComparison.OrdinalIgnoreCase))
                         {
-                            allotted = Convert.ToDecimal(row.Cells[1].Value);
+                            var allotObj = row.Cells.Count > 1 ? row.Cells[1].Value : null;
+                            if (allotObj != null && allotObj != DBNull.Value)
+                            {
+                                if (!decimal.TryParse(allotObj.ToString(), System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.CurrentCulture, out allotted))
+                                {
+                                    // fallback safe conversion
+                                    try { allotted = Convert.ToDecimal(allotObj); } catch { allotted = 0m; }
+                                }
+                            }
                             break;
                         }
                     }
@@ -240,14 +253,16 @@ namespace Project_SIGMA__A_Budget_Request_Application_
 
                     decimal excessDeficit = allotted - newReceipt.TotalAmount;
 
-                    // Add row to Summary Grid (Invoice, Supplier, Category, Allotted, Actual, Diff)
+                    // Show negatives with a leading minus instead of parentheses
+                    string diffText = excessDeficit.ToString("N2"); // e.g. -1,234.56
+
                     dgvSummary.Rows.Add(
                         newReceipt.Invoice,
                         newReceipt.Supplier,
                         newReceipt.Category,
                         allotted.ToString("N2"),
                         newReceipt.TotalAmount.ToString("N2"),
-                        excessDeficit.ToString("N2")
+                        diffText
                     );
 
                     UpdateGrandTotal();
@@ -259,7 +274,7 @@ namespace Project_SIGMA__A_Budget_Request_Application_
             decimal total = 0;
             foreach (var r in _stagedReceipts) total += r.TotalAmount;
             // Update Label (Ensure you have this label)
-            // lblGrandTotal.Text = "Total: " + total.ToString("C2"); 
+            // lblGrandTotal.Text = "Total: " + total.ToString("C2", new CultureInfo("en-PH")); 
         }
 
         // 4. SUBMIT BUTTON (Save to Database)
@@ -283,10 +298,19 @@ namespace Project_SIGMA__A_Budget_Request_Application_
                     int budgetID = ((ComboBoxItem)cmbApprovedBudgets.SelectedItem).Value;
                     string type = rdoLiquidation.Checked ? "Liquidation" : "Reimbursement"; // Assuming RadioButtons
 
-                    // A. INSERT HEADER
+                    // Compute totals
+                    decimal grandTotalExpense = 0m;
+                    decimal grandTotalDifference = 0m; // AllottedBudget - ActualExpense
+                    foreach (var r in _stagedReceipts)
+                    {
+                        grandTotalExpense += r.TotalAmount;
+                        grandTotalDifference += (r.AllottedBudget - r.TotalAmount);
+                    }
+
+                    // A. INSERT HEADER (include GrandTotalDifference)
                     string headQuery = @"INSERT INTO LiquidationRequests 
-                                         (BudgetRequestID, RequestType, SubmittedBy, Status, GrandTotalExpense)
-                                         VALUES (@BID, @Type, @User, 'Pending', @Total);
+                                         (BudgetRequestID, RequestType, SubmittedBy, Status, GrandTotalExpense, GrandTotalDifference)
+                                         VALUES (@BID, @Type, @User, 'Pending', @Total, @Diff);
                                          SELECT SCOPE_IDENTITY();";
 
                     int liqID = 0;
@@ -295,10 +319,8 @@ namespace Project_SIGMA__A_Budget_Request_Application_
                         cmd.Parameters.AddWithValue("@BID", budgetID);
                         cmd.Parameters.AddWithValue("@Type", type);
                         cmd.Parameters.AddWithValue("@User", UserSession.Username);
-
-                        decimal grandTotal = 0;
-                        foreach (var r in _stagedReceipts) grandTotal += r.TotalAmount;
-                        cmd.Parameters.AddWithValue("@Total", grandTotal);
+                        cmd.Parameters.AddWithValue("@Total", grandTotalExpense);
+                        cmd.Parameters.AddWithValue("@Diff", grandTotalDifference.ToString("N2"));
 
                         liqID = Convert.ToInt32(cmd.ExecuteScalar());
                     }

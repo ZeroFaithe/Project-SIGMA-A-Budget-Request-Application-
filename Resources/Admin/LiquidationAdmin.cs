@@ -2,6 +2,7 @@
 using System.Data;
 using System.Drawing;
 using System.IO; // Required for Image handling
+using System.Globalization;
 using System.Windows.Forms;
 using Microsoft.Data.SqlClient;
 using System.Configuration;
@@ -54,9 +55,16 @@ namespace Project_SIGMA__A_Budget_Request_Application_.Resources.Admin
 
                     // Format Money Columns
                     if (dgvRequests.Columns["GrandTotalExpense"] != null)
+                    {
                         dgvRequests.Columns["GrandTotalExpense"].DefaultCellStyle.Format = "C2";
+                        dgvRequests.Columns["GrandTotalExpense"].DefaultCellStyle.FormatProvider = CultureInfo.GetCultureInfo("en-PH");
+                    }
+                        
                     if (dgvRequests.Columns["GrandTotalDifference"] != null)
+                    {
                         dgvRequests.Columns["GrandTotalDifference"].DefaultCellStyle.Format = "C2";
+                        dgvRequests.Columns["GrandTotalDifference"].DefaultCellStyle.FormatProvider = CultureInfo.GetCultureInfo("en-PH");
+                    }             
                 }
                 catch (Exception ex) { MessageBox.Show("Error loading data: " + ex.Message); }
             }
@@ -102,7 +110,10 @@ namespace Project_SIGMA__A_Budget_Request_Application_.Resources.Admin
 
                 // Format Money
                 if (dgvReceipts.Columns["ActualExpense"] != null)
+                {
                     dgvReceipts.Columns["ActualExpense"].DefaultCellStyle.Format = "C2";
+                    dgvReceipts.Columns["ActualExpense"].DefaultCellStyle.FormatProvider = CultureInfo.GetCultureInfo("en-PH");
+                }
             }
         }
 
@@ -153,11 +164,16 @@ namespace Project_SIGMA__A_Budget_Request_Application_.Resources.Admin
         // 4. APPROVAL LOGIC (Standard)
         private void ProcessDecision(string newStatus)
         {
-            if (_selectedLiquidationID == -1) { MessageBox.Show("Select a report first."); return; }
+            if (_selectedLiquidationID == -1) 
+            { 
+                MessageBox.Show("Select a report first."); 
+                return; 
+            }
 
             if ((newStatus == "Rejected" || newStatus == "To be Revised") && string.IsNullOrWhiteSpace(rtbRemarks.Text))
             {
-                MessageBox.Show("Remarks are required for Rejection/Revision."); return;
+                MessageBox.Show("Add Remarks."); 
+                return;
             }
 
             if (MessageBox.Show($"Mark report as {newStatus}?", "Confirm", MessageBoxButtons.YesNo) == DialogResult.No) return;

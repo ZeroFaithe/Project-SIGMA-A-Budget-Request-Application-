@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Globalization;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -51,7 +52,11 @@ namespace Project_SIGMA__A_Budget_Request_Application_.Resources.Admin
                     if (dgvPendingPOA.Columns["ID"] != null) dgvPendingPOA.Columns["ID"].Visible = false;
 
                     // Format Budget
-                    if (dgvPendingPOA.Columns["ProposedBudget"] != null) dgvPendingPOA.Columns["ProposedBudget"].DefaultCellStyle.Format = "C2";
+                    if (dgvPendingPOA.Columns["ProposedBudget"] != null) 
+                    {
+                        dgvPendingPOA.Columns["ProposedBudget"].DefaultCellStyle.Format = "C2";
+                        dgvPendingPOA.Columns["ProposedBudget"].DefaultCellStyle.FormatProvider = CultureInfo.GetCultureInfo("en-PH");
+                    } 
                 }
                 catch (Exception ex)
                 {

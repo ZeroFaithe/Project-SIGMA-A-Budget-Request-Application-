@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -58,7 +59,10 @@ namespace Project_SIGMA__A_Budget_Request_Application_.Resources.Student
 
                     // Format Money
                     if (dgvMyRequests.Columns["TotalAmount"] != null)
+                    {
                         dgvMyRequests.Columns["TotalAmount"].DefaultCellStyle.Format = "C2";
+                        dgvMyRequests.Columns["TotalAmount"].DefaultCellStyle.FormatProvider = CultureInfo.GetCultureInfo("en-PH");
+                    }    
                 }
                 catch (Exception ex)
                 {
@@ -118,8 +122,17 @@ namespace Project_SIGMA__A_Budget_Request_Application_.Resources.Student
 
                     // Formatting
                     dgvBreakdown.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                    if (dgvBreakdown.Columns["Amount"] != null) dgvBreakdown.Columns["Amount"].DefaultCellStyle.Format = "C2";
-                    if (dgvBreakdown.Columns["TotalCost"] != null) dgvBreakdown.Columns["TotalCost"].DefaultCellStyle.Format = "C2";
+                    if (dgvBreakdown.Columns["Amount"] != null) 
+                    {
+                        dgvBreakdown.Columns["Amount"].DefaultCellStyle.Format = "C2";
+                        dgvBreakdown.Columns["Amount"].DefaultCellStyle.FormatProvider = CultureInfo.GetCultureInfo("en-PH");
+                    }
+                    
+                    if (dgvBreakdown.Columns["TotalCost"] != null)
+                    {
+                        dgvBreakdown.Columns["TotalCost"].DefaultCellStyle.Format = "C2";
+                        dgvBreakdown.Columns["TotalCost"].DefaultCellStyle.FormatProvider = CultureInfo.GetCultureInfo("en-PH");
+                    }
                 }
                 catch (Exception ex) { MessageBox.Show("Error loading items: " + ex.Message); }
             }

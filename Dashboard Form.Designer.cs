@@ -46,7 +46,6 @@
             label5 = new Label();
             panel6 = new Panel();
             panel5 = new Panel();
-            label4 = new Label();
             dgvPendingRequests = new DataGridView();
             panel4 = new Panel();
             label3 = new Label();
@@ -60,6 +59,7 @@
             POAcmb = new ComboBox();
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             pictureBox3 = new PictureBox();
+            label4 = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvDBPendingApprovals).BeginInit();
             panel7.SuspendLayout();
@@ -177,9 +177,9 @@
             label6.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold);
             label6.Location = new Point(41, 548);
             label6.Name = "label6";
-            label6.Size = new Size(188, 19);
+            label6.Size = new Size(230, 19);
             label6.TabIndex = 13;
-            label6.Text = "PENDING APPROVALS";
+            label6.Text = "PENDING POA APPROVALS";
             // 
             // label5
             // 
@@ -210,18 +210,6 @@
             panel5.Name = "panel5";
             panel5.Size = new Size(191, 160);
             panel5.TabIndex = 11;
-            // 
-            // label4
-            // 
-            label4.BackColor = Color.Maroon;
-            label4.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold);
-            label4.ForeColor = Color.White;
-            label4.Location = new Point(0, 0);
-            label4.Name = "label4";
-            label4.Size = new Size(191, 51);
-            label4.TabIndex = 14;
-            label4.Text = "PENDING REQUESTS";
-            label4.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // dgvPendingRequests
             // 
@@ -377,6 +365,18 @@
             pictureBox3.Size = new Size(67, 71);
             pictureBox3.TabIndex = 13;
             pictureBox3.TabStop = false;
+            // 
+            // label4
+            // 
+            label4.BackColor = Color.Maroon;
+            label4.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold);
+            label4.ForeColor = Color.White;
+            label4.Location = new Point(0, 0);
+            label4.Name = "label4";
+            label4.Size = new Size(191, 51);
+            label4.TabIndex = 14;
+            label4.Text = "PENDING BUDGET REQUESTS";
+            label4.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // Dashboard_Form
             // 

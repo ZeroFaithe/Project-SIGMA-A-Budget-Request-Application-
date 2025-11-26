@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Globalization;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -57,9 +58,16 @@ namespace Project_SIGMA__A_Budget_Request_Application_.Resources.Admin
                         // FORMATTING
                         dgvItems.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                         if (dgvItems.Columns["UnitPrice"] != null)
+                        {
                             dgvItems.Columns["UnitPrice"].DefaultCellStyle.Format = "C2";
+                            dgvItems.Columns["UnitPrice"].DefaultCellStyle.FormatProvider = CultureInfo.GetCultureInfo("en-PH");
+                        }
+
                         if (dgvItems.Columns["TotalCost"] != null)
+                        {
                             dgvItems.Columns["TotalCost"].DefaultCellStyle.Format = "C2";
+                            dgvItems.Columns["TotalCost"].DefaultCellStyle.FormatProvider = CultureInfo.GetCultureInfo("en-PH");
+                        }
 
                         // CALCULATE TOTAL FOR DISPLAY
                         decimal total = 0;
@@ -67,7 +75,7 @@ namespace Project_SIGMA__A_Budget_Request_Application_.Resources.Admin
                         {
                             total += Convert.ToDecimal(row["TotalCost"]);
                         }
-                        lblTotal.Text = total.ToString("C2");
+                        lblTotal.Text = total.ToString("C2", new CultureInfo("en-PH"));
                     }
                 }
                 catch (Exception ex)

@@ -16,6 +16,7 @@ namespace Project_SIGMA__A_Budget_Request_Application_
     public partial class ManagePOA : Form
     {
         private int _selectedPOAID = -1;
+        private string _currentStatus = "Approved"; // keeps track of current filter so we can refresh after delete
         string connectionString = ConfigurationManager.ConnectionStrings["SIGMADB"].ConnectionString;
         public ManagePOA()
         {
@@ -31,6 +32,8 @@ namespace Project_SIGMA__A_Budget_Request_Application_
 
         private void LoadPOAData(string statusToFilter)
         {
+            _currentStatus = statusToFilter; // remember current filter for refreshes
+
             using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["SIGMADB"].ConnectionString))
             {
                 try
@@ -73,9 +76,6 @@ namespace Project_SIGMA__A_Budget_Request_Application_
                 }
             }
         }
-
-
-
 
         private void LoadRemarks(int poaID)
         {
@@ -169,6 +169,8 @@ namespace Project_SIGMA__A_Budget_Request_Application_
                     else
                     {
                         btnEdit.Enabled = false;
+                        // still allow delete selection capture
+                        _selectedPOAID = selectedID;
                     }
                 }
             }
@@ -191,5 +193,112 @@ namespace Project_SIGMA__A_Budget_Request_Application_
             }
         }
 
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            // Determine the POA ID to delete
+            int poaID = -1;
+            if (_selectedPOAID != -1)
+            {
+                poaID = _selectedPOAID;
+            }
+            else if (dgvPOASummary.CurrentRow != null && dgvPOASummary.CurrentRow.Cells["ID"] != null && dgvPOASummary.CurrentRow.Cells["ID"].Value != DBNull.Value)
+            {
+                poaID = Convert.ToInt32(dgvPOASummary.CurrentRow.Cells["ID"].Value);
+            }
+            else if (dgvPOASummary.SelectedRows.Count > 0 && dgvPOASummary.SelectedRows[0].Cells["ID"].Value != DBNull.Value)
+            {
+                poaID = Convert.ToInt32(dgvPOASummary.SelectedRows[0].Cells["ID"].Value);
+            }
+
+            if (poaID == -1)
+            {
+                MessageBox.Show("Please select a POA entry to delete.", "Delete POA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Confirm deletion
+            var confirm = MessageBox.Show("Are you sure you want to permanently delete the selected POA entry? This action cannot be undone.", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (confirm != DialogResult.Yes) return;
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                using (SqlTransaction transaction = conn.BeginTransaction())
+                {
+                    try
+                    {
+                        // Safety: Do not delete if there are related BudgetRequests (prevent FK issues / accidental loss)
+                        string checkBudgetReq = "SELECT COUNT(1) FROM BudgetRequests WHERE POAID = @ID";
+                        string checkStatus = "SELECT Status FROM POA WHERE ID = @ID";
+
+                        using (SqlCommand chk = new SqlCommand(checkBudgetReq, conn, transaction))
+                        {
+                            chk.Parameters.AddWithValue("@ID", poaID);
+                            int relatedCount = Convert.ToInt32(chk.ExecuteScalar());
+                            if (relatedCount > 0)
+                            {
+                                transaction.Rollback();
+                                MessageBox.Show("Cannot delete this POA because related Budget Requests exist. Please remove or reassign those first.", "Delete POA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+                        }
+
+                        using (SqlCommand chkStatusCmd = new SqlCommand(checkStatus, conn, transaction))
+                        {
+                            chkStatusCmd.Parameters.AddWithValue("@ID", poaID);
+                            string status = (string)chkStatusCmd.ExecuteScalar();
+                            if (status == "Approved")
+                            {
+                                transaction.Rollback();
+                                MessageBox.Show("Cannot delete an Approved POA. Please contact the administrator if you believe this is an error.", "Delete POA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+                        }
+
+                        // Delete child tables that reference POA (remarks, budget items)
+                        string deleteItems = "DELETE FROM POABudgetItems WHERE POAID = @ID";
+                        using (SqlCommand delItems = new SqlCommand(deleteItems, conn, transaction))
+                        {
+                            delItems.Parameters.AddWithValue("@ID", poaID);
+                            delItems.ExecuteNonQuery();
+                        }
+
+                        string deleteRemarks = "DELETE FROM POARemarks WHERE POAID = @ID";
+                        using (SqlCommand delRemarks = new SqlCommand(deleteRemarks, conn, transaction))
+                        {
+                            delRemarks.Parameters.AddWithValue("@ID", poaID);
+                            delRemarks.ExecuteNonQuery();
+                        }
+
+                        // Finally delete the POA row
+                        string deletePOA = "DELETE FROM POA WHERE ID = @ID";
+                        using (SqlCommand delPOA = new SqlCommand(deletePOA, conn, transaction))
+                        {
+                            delPOA.Parameters.AddWithValue("@ID", poaID);
+                            int rowsAffected = delPOA.ExecuteNonQuery();
+                            if (rowsAffected == 0)
+                                throw new Exception("POA record not found or already deleted.");
+                        }
+
+                        transaction.Commit();
+
+                        MessageBox.Show("POA deleted successfully.", "Delete POA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        // Refresh the grid for the current filter
+                        LoadPOAData(_currentStatus);
+
+                        // Reset selection state and clear any loaded remarks
+                        _selectedPOAID = -1;
+                        btnEdit.Enabled = false;
+                        dgvRemarks.DataSource = null;
+                    }
+                    catch (Exception ex)
+                    {
+                        try { transaction.Rollback(); } catch { /* ignore */ }
+                        MessageBox.Show("Error deleting POA: " + ex.Message, "Delete POA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
     }
 }

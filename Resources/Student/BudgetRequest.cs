@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
+using System.Globalization;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -185,7 +186,7 @@ namespace Project_SIGMA__A_Budget_Request_Application_
                         if (reader.Read())
                         {
                             originalBudget = Convert.ToDecimal(reader["ProposedBudget"]);
-                            lblTotalBudget.Text = "Total POA Budget: " + originalBudget.ToString("C2");
+                            lblTotalBudget.Text = "Total POA Budget: " + originalBudget.ToString("C2", new CultureInfo("en-PH"));
                             lblDate.Text = "Event Date: " + Convert.ToDateTime(reader["EventDate"]).ToShortDateString();
                         }
                     }
@@ -223,7 +224,7 @@ namespace Project_SIGMA__A_Budget_Request_Application_
                 // Now 'alreadyRequested' exists and can be used here
                 _currentRemainingBalance = originalBudget - alreadyRequested;
 
-                lblRemainingBalance.Text = "Remaining Balance: " + _currentRemainingBalance.ToString("C2");
+                lblRemainingBalance.Text = "Remaining Balance: " + _currentRemainingBalance.ToString("C2", new CultureInfo("en-PH"));
 
                 if (_currentRemainingBalance <= 0)
                     lblRemainingBalance.ForeColor = System.Drawing.Color.Red;
@@ -292,7 +293,7 @@ namespace Project_SIGMA__A_Budget_Request_Application_
             }
 
             // Update the big label
-            lblGrandTotal.Text = grandTotal.ToString("C2");
+            lblGrandTotal.Text = grandTotal.ToString("C2", new CultureInfo("en-PH"));
 
             // IMPORTANT: Store the raw number in the Tag so we can use it for saving later
             lblGrandTotal.Tag = grandTotal;
@@ -303,7 +304,14 @@ namespace Project_SIGMA__A_Budget_Request_Application_
             if (grandTotal > _currentRemainingBalance)
             {
                 lblGrandTotal.ForeColor = Color.Red;
-                MessageBox.Show($"Warning: You are requesting {grandTotal:C2}, but you only have {_currentRemainingBalance:C2} remaining!", "Over Budget", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(
+                $"Warning: You are requesting {grandTotal.ToString("C2", new CultureInfo("en-PH"))}, " +
+                $"but you only have {_currentRemainingBalance.ToString("C2", new CultureInfo("en-PH"))} remaining!",
+                "Over Budget",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Warning
+);
+
                 btnSubmitRequest.Enabled = false; // Block submission
             }
             // 2. Check if total is 0 (Cannot submit empty request)

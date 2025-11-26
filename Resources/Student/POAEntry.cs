@@ -3,6 +3,7 @@ using Project_SIGMA__A_Budget_Request_Application_.Resources;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Globalization;
 using System.Configuration;
 using System.Data;
 using System.Drawing;
@@ -77,6 +78,75 @@ namespace Project_SIGMA__A_Budget_Request_Application_
 
             // 2. FORCE CALCULATION (Ensure the Tag has the latest total)
             CalculateRowAndTotal();
+
+            // --- VALIDATION: required header fields ---
+            string eventName = txtEventName.Text?.Trim() ?? string.Empty;
+            string organization = cmbOrganization.Text?.Trim() ?? string.Empty;
+            string participants = txtParticipants.Text?.Trim() ?? string.Empty;
+            string venue = txtVenue.Text?.Trim() ?? string.Empty;
+            string objectives = txtObjectives.Text?.Trim() ?? string.Empty;
+
+            if (string.IsNullOrEmpty(eventName))
+            {
+                MessageBox.Show("Please enter the Event Name.", "Validation", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtEventName.Focus();
+                return;
+            }
+
+            if (string.IsNullOrEmpty(organization))
+            {
+                MessageBox.Show("Please select or enter the Organization.", "Validation", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                cmbOrganization.Focus();
+                return;
+            }
+
+            if (string.IsNullOrEmpty(participants))
+            {
+                MessageBox.Show("Please enter Participants.", "Validation", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtParticipants.Focus();
+                return;
+            }
+
+            if (string.IsNullOrEmpty(venue))
+            {
+                MessageBox.Show("Please enter the Venue/Mode.", "Validation", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtVenue.Focus();
+                return;
+            }
+
+            if (string.IsNullOrEmpty(objectives))
+            {
+                MessageBox.Show("Please enter Objectives/Description.", "Validation", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtObjectives.Focus();
+                return;
+            }
+
+            // --- VALIDATION: ensure at least one budget row was added ---
+            bool hasBudgetRow = false;
+            foreach (DataGridViewRow row in dgvBudgetItems.Rows)
+            {
+                if (row.IsNewRow) continue;
+
+                // consider a row present if any cell in the row contains non-empty data
+                for (int c = 0; c < row.Cells.Count; c++)
+                {
+                    var val = row.Cells[c].Value;
+                    if (val != null && !string.IsNullOrWhiteSpace(val.ToString()))
+                    {
+                        hasBudgetRow = true;
+                        break;
+                    }
+                }
+
+                if (hasBudgetRow) break;
+            }
+
+            if (!hasBudgetRow)
+            {
+                MessageBox.Show("Please add at least one budget item to the breakdown.", "Validation", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                dgvBudgetItems.Focus();
+                return;
+            }
 
             // Safety check for the total
             if (lblTotalBudget.Tag == null) lblTotalBudget.Tag = 0;
@@ -185,6 +255,7 @@ namespace Project_SIGMA__A_Budget_Request_Application_
 
                     if (_isEditMode)
                         MessageBox.Show("Success! Entry updated and re-submitted.");
+                    
                     else
                         MessageBox.Show("Success! POA and Budget Breakdown Submitted.");
 
@@ -240,7 +311,7 @@ namespace Project_SIGMA__A_Budget_Request_Application_
             }
 
             // 4. DISPLAY GRAND TOTAL
-            lblTotalBudget.Text = "Total Proposed Budget: " + grandTotal.ToString("C2");
+            lblTotalBudget.Text = "Total Proposed Budget: " + grandTotal.ToString("C2", new CultureInfo("en-PH"));
 
             // Store the raw number in the Label's Tag so we can grab it easily for the database
             lblTotalBudget.Tag = grandTotal;

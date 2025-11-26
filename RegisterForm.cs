@@ -10,6 +10,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
+using System.Net.Mail;
 
 namespace Project_SIGMA__A_Budget_Request_Application_
 {
@@ -67,20 +69,60 @@ namespace Project_SIGMA__A_Budget_Request_Application_
         {
             try
             {
-                if (usernameTxt.Text == "" || passwordTxt.Text == "" || confirmPassTxt.Text == "" || emailTxt.Text == "")
+                string username = usernameTxt.Text?.Trim() ?? string.Empty;
+                string password = passwordTxt.Text ?? string.Empty;
+                string confirm = confirmPassTxt.Text ?? string.Empty;
+                string email = emailTxt.Text?.Trim() ?? string.Empty;
+
+                if (username == "" || password == "" || confirm == "" || email == "")
                 {
                     MessageBox.Show("Please fill in all fields.");
                     return;
                 }
 
-                if (passwordTxt.Text != confirmPassTxt.Text)
+                if (password != confirm)
                 {
                     MessageBox.Show("Passwords do not match.");
                     return;
                 }
 
+                // Password minimum length
+                if (password.Length < 8)
+                {
+                    MessageBox.Show("Password must be at least 8 characters long.");
+                    return;
+                }
+
+                // Email format validation
+                if (!IsValidEmail(email))
+                {
+                    MessageBox.Show("Please enter a valid email address (must contain @ and a domain).");
+                    return;
+                }
+
+                // When creating an admin account require an @auf.edu.ph address
+                if (string.Equals(roleQuery, "admin"))
+                {
+                    if (!email.EndsWith("@auf.edu.ph", StringComparison.OrdinalIgnoreCase))
+                    {
+                        MessageBox.Show("Admin accounts must use an @auf.edu.ph email address.");
+                        return;
+                    }
+                }
+
+                // When creating a student account require an @student.auf.edu.ph address
+                if (string.Equals(roleQuery, "council") || string.Equals(roleQuery, "representative"))
+                {
+                    if (!email.EndsWith("@student.auf.edu.ph", StringComparison.OrdinalIgnoreCase))
+                    {
+                        MessageBox.Show("Student accounts must use an @student.auf.edu.ph email address.");
+                        return;
+                    }
+                    
+                }
+
                 string connectionString = ConfigurationManager.ConnectionStrings["SIGMADB"].ConnectionString;
-                string hashedPass = BCrypt.Net.BCrypt.HashPassword(passwordTxt.Text);
+                string hashedPass = BCrypt.Net.BCrypt.HashPassword(password);
 
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
@@ -88,10 +130,10 @@ namespace Project_SIGMA__A_Budget_Request_Application_
                     string query = "INSERT INTO Users (Username, PasswordHash, Role, Email) VALUES (@username, @password, @role, @email)";
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                        command.Parameters.AddWithValue("@username", usernameTxt.Text);
+                        command.Parameters.AddWithValue("@username", username);
                         command.Parameters.AddWithValue("@password", hashedPass);
                         command.Parameters.AddWithValue("@role", roleQuery);
-                        command.Parameters.AddWithValue("@email", emailTxt.Text);
+                        command.Parameters.AddWithValue("@email", email);
                         int result = command.ExecuteNonQuery();
                         if (result > 0)
                         {
@@ -108,6 +150,26 @@ namespace Project_SIGMA__A_Budget_Request_Application_
             catch (Exception ex)
             {
                 MessageBox.Show("An error occurred: " + ex.Message);
+            }
+        }
+
+        private bool IsValidEmail(string email)
+        {
+            if (string.IsNullOrWhiteSpace(email))
+                return false;
+
+            // Quick regex check to rule out obvious invalid values, then use MailAddress for stronger validation
+            if (!Regex.IsMatch(email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
+                return false;
+
+            try
+            {
+                var addr = new MailAddress(email);
+                return addr.Address == email;
+            }
+            catch
+            {
+                return false;
             }
         }
     }

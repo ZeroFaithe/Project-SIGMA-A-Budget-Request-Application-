@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
+using System.Globalization;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -270,7 +271,10 @@ namespace Project_SIGMA__A_Budget_Request_Application_
 
                     // Format Money
                     if (dgvPendingRequests.Columns["TotalAmount"] != null)
+                    {
                         dgvPendingRequests.Columns["TotalAmount"].DefaultCellStyle.Format = "C2";
+                        dgvPendingRequests.Columns["TotalAmount"].DefaultCellStyle.FormatProvider = CultureInfo.GetCultureInfo("en-PH");
+                    }    
                 }
                 catch (Exception ex)
                 {
@@ -329,9 +333,9 @@ namespace Project_SIGMA__A_Budget_Request_Application_
                     }
                 }
 
-                lblTotal.Text = originalBudget.ToString("C2");
-                lblUsedFunds.Text = usedFunds.ToString("C2");
-                lblRemainingFunds.Text = remainingFunds.ToString("C2");
+                lblTotal.Text = originalBudget.ToString("C2", new CultureInfo("en-PH"));
+                lblUsedFunds.Text = usedFunds.ToString("C2", new CultureInfo("en-PH"));
+                lblRemainingFunds.Text = remainingFunds.ToString("C2", new CultureInfo("en-PH"));
             }          
         }
 

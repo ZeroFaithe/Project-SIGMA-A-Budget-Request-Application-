@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Globalization;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -53,7 +54,10 @@ namespace Project_SIGMA__A_Budget_Request_Application_.Resources.Admin
                         dgvPendingRequests.Columns["RequestID"].Visible = false;
 
                     if (dgvPendingRequests.Columns["TotalAmount"] != null)
+                    {
                         dgvPendingRequests.Columns["TotalAmount"].DefaultCellStyle.Format = "C2";
+                        dgvPendingRequests.Columns["TotalAmount"].DefaultCellStyle.FormatProvider = CultureInfo.GetCultureInfo("en-PH");
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -88,9 +92,16 @@ namespace Project_SIGMA__A_Budget_Request_Application_.Resources.Admin
 
                         // Formatting
                         if (dgvBreakdown.Columns["Amount"] != null)
+                        {
                             dgvBreakdown.Columns["Amount"].DefaultCellStyle.Format = "C2";
+                            dgvBreakdown.Columns["Amount"].DefaultCellStyle.FormatProvider = CultureInfo.GetCultureInfo("en-PH");
+                        }
+                            
                         if (dgvBreakdown.Columns["TotalCost"] != null)
+                        {
                             dgvBreakdown.Columns["TotalCost"].DefaultCellStyle.Format = "C2";
+                            dgvBreakdown.Columns["TotalCost"].DefaultCellStyle.FormatProvider = CultureInfo.GetCultureInfo("en-PH");
+                        }
                     }
                 }
                 catch (Exception ex)
@@ -111,7 +122,7 @@ namespace Project_SIGMA__A_Budget_Request_Application_.Resources.Admin
 
             if ((newStatus == "Rejected" || newStatus == "To be Revised") && string.IsNullOrWhiteSpace(rtbRemarks.Text))
             {
-                MessageBox.Show("You must provide a remark explaining your decision.", "Remark Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Add Remarks.", "Remark Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
